@@ -1,0 +1,15 @@
+@import "tailwindcss";
+
+/* 1. Import a professional font from Google */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap");
+
+@theme {
+  /* 2. Set "Inter" as your primary font */
+  --font-inter: "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+/* Apply it globally to the whole app */
+body {
+  font-family: var(--font-inter);
+  background-color: #fcfdfe; /* A very slight medical-tint white */
+}
