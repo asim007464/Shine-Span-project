@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 const CTA = () => {
   return (
     <section className="relative overflow-hidden py-12 bg-gradient-to-br from-[#448cff] to-[#3372db]">
@@ -23,7 +24,10 @@ const CTA = () => {
           </button>
 
           {/* Secondary Outline Button */}
-          <button className="w-full sm:w-auto border-2 border-white/30 text-white px-6 py-4 rounded-2xl font-bold text-[13px] uppercase tracking-widest hover:bg-white/10 transition-all flex items-center justify-center gap-3">
+          <Link
+            to="/services"
+            className="w-full sm:w-auto border-2 border-white/30 text-white px-6 py-4 rounded-2xl font-bold text-[13px] uppercase tracking-widest hover:bg-white/10 transition-all flex items-center justify-center gap-3"
+          >
             <svg
               className="w-5 h-5 text-blue-200"
               fill="none"
@@ -38,7 +42,7 @@ const CTA = () => {
               />
             </svg>
             Call (555) 123-4567
-          </button>
+          </Link>
         </div>
       </div>
     </section>

@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
 const Services = () => {
   const serviceList = [
     {
@@ -70,7 +70,10 @@ const Services = () => {
 
         {/* Footer Action */}
         <div className="mt-16 text-center">
-          <button className="inline-flex items-center gap-2 px-8 py-4 border-2 border-gray-100 hover:border-[#448cff] hover:text-[#448cff] text-gray-600 font-bold rounded-2xl transition-all group">
+          <Link
+            to="/services"
+            className="inline-flex items-center gap-2 px-8 py-4 border-2 border-gray-100 hover:border-[#448cff] hover:text-[#448cff] text-gray-600 font-bold rounded-2xl transition-all group"
+          >
             View All Services
             <svg
               className="w-4 h-4 transform group-hover:translate-x-1 transition-transform"
@@ -85,7 +88,7 @@ const Services = () => {
                 d="M17 8l4 4m0 0l-4 4m4-4H3"
               />
             </svg>
-          </button>
+          </Link>
         </div>
       </div>
     </section>

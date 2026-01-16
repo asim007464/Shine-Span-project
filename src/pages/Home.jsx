@@ -2,12 +2,12 @@ import React from "react";
 import WhyChooseUs from "../components/Homecomponents/WhyChooseUs";
 import Services from "../components/Homecomponents/Services";
 import CTA from "../components/Homecomponents/CTA";
-
+import { Link } from "react-router-dom";
 const Home = () => {
   return (
     <div className="font-jakarta">
       {/* --- HERO SECTION --- */}
-      <section className="relative min-h-[80vh] flex flex-col items-center justify-center text-center px-4 bg-[#0f1216]">
+      <section className="relative min-h-[80vh] flex flex-col items-center justify-center text-center py-10 px-4 bg-[#0f1216]">
         {/* Decorative Background Glow (matches the premium dark look) */}
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#448cff]/10 rounded-full blur-[120px]"></div>
@@ -41,9 +41,12 @@ const Home = () => {
               Book Now
             </button>
 
-            <button className="w-full sm:w-auto flex items-center justify-center gap-2 border border-gray-700 bg-gray-800/20 text-white px-10 py-5 rounded-2xl font-bold text-[15px] hover:bg-gray-800 transition-all group">
+            <Link
+              to="/services"
+              className="w-full sm:w-auto flex items-center justify-center gap-2 border border-gray-700 bg-gray-800/20 text-white px-10 py-5 rounded-2xl font-bold text-[15px] hover:bg-gray-800 transition-all group"
+            >
               View All Services
-            </button>
+            </Link>
           </div>
         </div>
       </section>
