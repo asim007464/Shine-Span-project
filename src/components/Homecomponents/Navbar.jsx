@@ -54,12 +54,18 @@ const Navbar = () => {
 
           {/* Action Buttons */}
           <div className="hidden md:flex items-center space-x-4">
-            <button className="px-6 py-2 border border-gray-300 rounded-lg text-gray-700 font-semibold text-sm hover:border-blue-500 hover:text-blue-500 transition-all">
+            <NavLink
+              to="/login"
+              className="px-6 py-2 border border-gray-300 rounded-lg text-gray-700 font-semibold text-sm hover:border-blue-500 hover:text-blue-500 transition-all"
+            >
               Login
-            </button>
-            <button className="btn-shiny px-7 py-2.5 text-white rounded-lg font-bold bg-blue-600 text-sm hover:bg-blue-800 transition-all active:scale-95">
+            </NavLink>
+            <NavLink
+              to="/register"
+              className="btn-shiny px-7 py-2.5 text-white rounded-lg font-bold bg-blue-600 text-sm hover:bg-blue-800 transition-all active:scale-95"
+            >
               Book Now
-            </button>
+            </NavLink>
           </div>
 
           {/* Mobile Menu Icon (FIXED PATH HERE) */}

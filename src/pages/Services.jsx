@@ -1,6 +1,9 @@
 import React from "react";
 import Inclusions from "../components/Servicescomponents/Inclusions";
 import BookCTA from "../components/Servicescomponents/BookCTA";
+import Navbar from "../components/Homecomponents/Navbar";
+
+import Footer from "../components/Homecomponents/Footer";
 const Services = () => {
   const serviceData = [
     {
@@ -128,82 +131,86 @@ const Services = () => {
   ];
 
   return (
-    <div className="bg-[#fcfdfe] font-jakarta ">
-      {/* --- Header Section --- */}
-      <section className="py-20 text-center max-w-4xl mx-auto px-4">
-        <h1 className="text-4xl md:text-6xl font-black text-[#1e293b] mb-6 tracking-tight">
-          Our Cleaning <span className="text-[#448cff]">Services</span>
-        </h1>
-        <p className="text-gray-500 text-lg md:text-xl leading-relaxed font-medium">
-          Professional cleaning solutions tailored to your needs. From regular
-          house cleaning to specialized services, we’ve got you covered.
-        </p>
-      </section>
-      {/* --- Services Grid --- */}
-      <section className="max-w-7xl mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {serviceData.map((service, index) => (
-            <div
-              key={index}
-              className="group bg-white rounded-[2rem] border border-gray-100 shadow-sm overflow-hidden flex flex-col hover:shadow-xl hover:shadow-blue-100/40 transition-all duration-500"
-            >
-              {/* Image Container (Top) */}
-              <div className="relative h-64 overflow-hidden">
-                <img
-                  src={service.image}
-                  alt={service.title}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                />
-                {/* Icon Overlay */}
-                <div className="absolute top-4 left-4 w-12 h-12 bg-[#007BFF] text-white rounded-xl flex items-center justify-center shadow-lg transform group-hover:rotate-6 transition-transform">
-                  <svg
-                    className="w-6 h-6"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    strokeWidth="2"
-                  >
-                    {service.icon}
-                  </svg>
-                </div>
-              </div>
-
-              {/* Text Container (Bottom) */}
-              <div className="p-8 flex flex-col flex-1">
-                <h3 className="text-xl font-black text-[#1e293b] mb-3 group-hover:text-[#448cff] transition-colors">
-                  {service.title}
-                </h3>
-
-                <p className="text-gray-500 text-[14px] leading-relaxed mb-6 line-clamp-3">
-                  {service.desc}
-                </p>
-
-                {/* Bullet Points */}
-                <ul className="space-y-2 mb-8">
-                  {service.points.map((point, i) => (
-                    <li
-                      key={i}
-                      className="flex items-center text-gray-500 text-[13px] font-semibold"
+    <div>
+      <Navbar></Navbar>
+      <div className="bg-[#fcfdfe] font-jakarta ">
+        {/* --- Header Section --- */}
+        <section className="py-20 text-center max-w-4xl mx-auto px-4">
+          <h1 className="text-4xl md:text-6xl font-black text-[#1e293b] mb-6 tracking-tight">
+            Our Cleaning <span className="text-[#448cff]">Services</span>
+          </h1>
+          <p className="text-gray-500 text-lg md:text-xl leading-relaxed font-medium">
+            Professional cleaning solutions tailored to your needs. From regular
+            house cleaning to specialized services, we’ve got you covered.
+          </p>
+        </section>
+        {/* --- Services Grid --- */}
+        <section className="max-w-7xl mx-auto px-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {serviceData.map((service, index) => (
+              <div
+                key={index}
+                className="group bg-white rounded-[2rem] border border-gray-100 shadow-sm overflow-hidden flex flex-col hover:shadow-xl hover:shadow-blue-100/40 transition-all duration-500"
+              >
+                {/* Image Container (Top) */}
+                <div className="relative h-64 overflow-hidden">
+                  <img
+                    src={service.image}
+                    alt={service.title}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  />
+                  {/* Icon Overlay */}
+                  <div className="absolute top-4 left-4 w-12 h-12 bg-[#007BFF] text-white rounded-xl flex items-center justify-center shadow-lg transform group-hover:rotate-6 transition-transform">
+                    <svg
+                      className="w-6 h-6"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      strokeWidth="2"
                     >
-                      <span className="w-1.5 h-1.5 bg-[#448cff] rounded-full mr-2 flex-shrink-0"></span>
-                      {point}
-                    </li>
-                  ))}
-                </ul>
+                      {service.icon}
+                    </svg>
+                  </div>
+                </div>
 
-                {/* Action Button - mt-auto keeps it aligned at the bottom */}
-                <div className="mt-auto">
-                  <button className="w-full bg-[#007BFF] hover:bg-blue-700 text-white py-3.5 rounded-xl font-bold text-sm tracking-wide transition-all active:scale-95 shadow-md shadow-blue-50">
-                    Book Now
-                  </button>
+                {/* Text Container (Bottom) */}
+                <div className="p-8 flex flex-col flex-1">
+                  <h3 className="text-xl font-black text-[#1e293b] mb-3 group-hover:text-[#448cff] transition-colors">
+                    {service.title}
+                  </h3>
+
+                  <p className="text-gray-500 text-[14px] leading-relaxed mb-6 line-clamp-3">
+                    {service.desc}
+                  </p>
+
+                  {/* Bullet Points */}
+                  <ul className="space-y-2 mb-8">
+                    {service.points.map((point, i) => (
+                      <li
+                        key={i}
+                        className="flex items-center text-gray-500 text-[13px] font-semibold"
+                      >
+                        <span className="w-1.5 h-1.5 bg-[#448cff] rounded-full mr-2 flex-shrink-0"></span>
+                        {point}
+                      </li>
+                    ))}
+                  </ul>
+
+                  {/* Action Button - mt-auto keeps it aligned at the bottom */}
+                  <div className="mt-auto">
+                    <button className="w-full bg-[#007BFF] hover:bg-blue-700 text-white py-3.5 rounded-xl font-bold text-sm tracking-wide transition-all active:scale-95 shadow-md shadow-blue-50">
+                      Book Now
+                    </button>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
-        </div>
-      </section>
-      <Inclusions></Inclusions>
-      <BookCTA></BookCTA>
+            ))}
+          </div>
+        </section>
+        <Inclusions></Inclusions>
+        <BookCTA></BookCTA>
+      </div>
+      <Footer></Footer>
     </div>
   );
 };

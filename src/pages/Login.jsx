@@ -1,0 +1,193 @@
+import React, { useState } from "react";
+import { Eye, EyeOff, User, Sparkles, Shield, ArrowLeft } from "lucide-react";
+import { Link } from "react-router-dom";
+const Login = () => {
+  const [showPassword, setShowPassword] = useState(false);
+
+  // Mock data for demo credentials
+  const demoCredentials = [
+    {
+      role: "Client",
+      email: "client@shinespan.com",
+      pass: "client123",
+      icon: <User size={18} />,
+    },
+    {
+      role: "Cleaner",
+      email: "cleaner@shinespan.com",
+      pass: "cleaner123",
+      icon: <Sparkles size={18} />,
+    },
+    {
+      role: "Admin",
+      email: "admin@shinespan.com",
+      pass: "admin123",
+      icon: <Shield size={18} />,
+    },
+  ];
+
+  return (
+    <div className="flex min-h-screen bg-white font-sans text-slate-900">
+      {/* LEFT SECTION: Image & Testimonial (Hidden on mobile) */}
+      <div className="relative hidden w-1/2 lg:block">
+        <img
+          src="./loginimg.jpg"
+          alt="Cleaning Service"
+          /* Added brightness-50 to dim the image itself */
+          className="absolute inset-0 h-full w-full object-cover brightness-50"
+        />
+        {/* Dark Overlay */}
+        <div className="absolute inset-0 bg-black/40" />
+
+        {/* Logo */}
+        <div className="absolute left-10 top-10 flex items-center space-x-2 text-white">
+          <img src="./websitelogo.png" className="w-[100px]" alt="" />
+        </div>
+
+        {/* Testimonial & Footer */}
+        <div className="absolute bottom-10 left-10 right-10">
+          <p className="max-w-md text-xl font-medium leading-relaxed text-white">
+            "The platform that revolutionized how I manage my cleaning services.
+            Efficient, reliable, and user-friendly."
+          </p>
+          <p className="mt-4 text-sm font-semibold text-slate-300">
+            Sofia Davis
+          </p>
+          <p className="mt-12 text-xs text-slate-400">
+            © 2026 Shine & Span Inc.
+          </p>
+        </div>
+      </div>
+
+      {/* RIGHT SECTION: Login Form */}
+      <div className="flex w-full flex-col items-center justify-center px-6 py-12 lg:w-1/2 lg:px-20">
+        <div className="w-full max-w-[420px]">
+          {/* Back button */}
+          <Link
+            to="/"
+            className="mb-8 flex items-center text-sm font-medium text-slate-500 hover:text-blue-600 transition-colors"
+          >
+            <ArrowLeft size={16} className="mr-2" />
+            Back to Home
+          </Link>
+
+          <div className="mb-10 text-center">
+            <h1 className="text-3xl font-bold tracking-tight text-slate-900">
+              Welcome Back
+            </h1>
+            <p className="mt-2 text-sm text-slate-500">
+              Sign in to your SHINE & SPAN account
+            </p>
+          </div>
+
+          <form className="space-y-5" onSubmit={(e) => e.preventDefault()}>
+            <div>
+              <label className="block text-sm font-medium text-slate-700">
+                Email
+              </label>
+              <input
+                type="email"
+                placeholder="name@example.com"
+                className="mt-1.5 w-full rounded-lg border border-slate-300 px-4 py-2.5 outline-none transition-all focus:border-blue-500 focus:ring-2 focus:ring-blue-500/10"
+              />
+            </div>
+
+            <div>
+              <div className="flex items-center justify-between">
+                <label className="block text-sm font-medium text-slate-700">
+                  Password
+                </label>
+                <a
+                  href="#"
+                  className="text-sm font-medium text-blue-600 hover:underline"
+                >
+                  Forgot password?
+                </a>
+              </div>
+              <div className="relative mt-1.5">
+                <input
+                  type={showPassword ? "text" : "password"}
+                  placeholder="Enter your password"
+                  className="w-full rounded-lg border border-slate-300 px-4 py-2.5 pr-12 outline-none transition-all focus:border-blue-500 focus:ring-2 focus:ring-blue-500/10"
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600"
+                >
+                  {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+                </button>
+              </div>
+            </div>
+
+            <button className="w-full rounded-lg bg-blue-600 py-3 font-semibold text-white shadow-lg shadow-blue-500/20 transition-all hover:bg-blue-700 active:scale-[0.98]">
+              Sign In
+            </button>
+          </form>
+
+          {/* Demo Credentials */}
+          <div className="mt-10">
+            <div className="relative flex items-center justify-center">
+              <div className="absolute inset-0 flex items-center">
+                <div className="w-full border-t border-slate-200"></div>
+              </div>
+              <span className="relative bg-white px-3 text-[10px] font-bold uppercase tracking-widest text-slate-400">
+                Demo Credentials
+              </span>
+            </div>
+
+            <div className="mt-6 space-y-3">
+              {demoCredentials.map((cred) => (
+                <div
+                  key={cred.role}
+                  className="flex items-center justify-between rounded-xl border border-slate-100 bg-slate-50/50 p-4 transition-colors hover:bg-slate-50"
+                >
+                  <div className="flex items-center space-x-3">
+                    <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-white text-slate-600 shadow-sm border border-slate-100">
+                      {cred.icon}
+                    </div>
+                    <span className="text-sm font-semibold text-slate-700">
+                      {cred.role}
+                    </span>
+                  </div>
+                  <div className="text-right">
+                    <p className="text-[11px] font-medium text-slate-500">
+                      {cred.email}
+                    </p>
+                    <p className="text-[11px] font-bold text-slate-400">
+                      {cred.pass}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Footer Links */}
+          <div className="mt-10 space-y-2 text-center text-sm">
+            <p className="text-slate-500">
+              New client?{" "}
+              <Link
+                to="/register"
+                className="font-semibold text-blue-600 hover:underline"
+              >
+                Register here
+              </Link>
+            </p>
+            <p className="text-slate-500">
+              Want to join our team?{" "}
+              <a
+                href="#"
+                className="font-semibold text-blue-600 hover:underline"
+              >
+                Apply here
+              </a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Login;

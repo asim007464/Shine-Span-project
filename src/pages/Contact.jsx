@@ -1,5 +1,8 @@
 import React from "react";
 import FAQ from "../components/Contactcomponents/FAQ";
+import Navbar from "../components/Homecomponents/Navbar";
+
+import Footer from "../components/Homecomponents/Footer";
 const Contact = () => {
   const topCards = [
     {
@@ -91,106 +94,110 @@ const Contact = () => {
   ];
 
   return (
-    <div className="bg-[#fcfdfe] font-jakarta ">
-      {/* --- HEADER --- */}
-      <section className="py-20 text-center max-w-4xl mx-auto px-4">
-        <h1 className="text-4xl md:text-6xl font-black text-[#1e293b] mb-6 tracking-tight">
-          Contact <span className="text-[#448cff]">SHINE & SPAN</span>
-        </h1>
-        <p className="text-gray-500 text-lg md:text-xl leading-relaxed font-medium max-w-2xl mx-auto">
-          Ready to experience professional cleaning services? Get in touch with
-          us today for a free quote or to schedule your cleaning service.
-        </p>
-      </section>
+    <div>
+      <Navbar></Navbar>
+      <div className="bg-[#fcfdfe] font-jakarta ">
+        {/* --- HEADER --- */}
+        <section className="py-20 text-center max-w-4xl mx-auto px-4">
+          <h1 className="text-4xl md:text-6xl font-black text-[#1e293b] mb-6 tracking-tight">
+            Contact <span className="text-[#448cff]">SHINE & SPAN</span>
+          </h1>
+          <p className="text-gray-500 text-lg md:text-xl leading-relaxed font-medium max-w-2xl mx-auto">
+            Ready to experience professional cleaning services? Get in touch
+            with us today for a free quote or to schedule your cleaning service.
+          </p>
+        </section>
 
-      {/* --- TOP 4 CARDS --- */}
-      <section className="max-w-7xl mx-auto px-4 mb-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {topCards.map((card, idx) => (
-            <div
-              key={idx}
-              className="bg-white border border-gray-100 rounded-2xl p-4 flex flex-col items-center text-center shadow-sm"
-            >
-              <div className="w-14 h-14 bg-blue-50 text-[#448cff] rounded-full flex items-center justify-center mb-6">
-                {card.icon}
-              </div>
-              <h3 className="text-lg font-black text-[#1e293b] mb-4">
-                {card.title}
-              </h3>
-              <div className="mb-6 flex-1">
-                <p className="text-gray-500 font-medium text-sm">
-                  {card.value}
-                </p>
-                {card.sub && (
-                  <p className="text-gray-400 text-xs mt-1">{card.sub}</p>
+        {/* --- TOP 4 CARDS --- */}
+        <section className="max-w-7xl mx-auto px-4 mb-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {topCards.map((card, idx) => (
+              <div
+                key={idx}
+                className="bg-white border border-gray-100 rounded-2xl p-4 flex flex-col items-center text-center shadow-sm"
+              >
+                <div className="w-14 h-14 bg-blue-50 text-[#448cff] rounded-full flex items-center justify-center mb-6">
+                  {card.icon}
+                </div>
+                <h3 className="text-lg font-black text-[#1e293b] mb-4">
+                  {card.title}
+                </h3>
+                <div className="mb-6 flex-1">
+                  <p className="text-gray-500 font-medium text-sm">
+                    {card.value}
+                  </p>
+                  {card.sub && (
+                    <p className="text-gray-400 text-xs mt-1">{card.sub}</p>
+                  )}
+                </div>
+                {card.btn && (
+                  <button className="px-6 py-2 border border-gray-200 rounded-lg text-sm font-bold text-[#1e293b] hover:border-[#448cff] hover:text-[#448cff] transition-all">
+                    {card.btn}
+                  </button>
                 )}
               </div>
-              {card.btn && (
-                <button className="px-6 py-2 border border-gray-200 rounded-lg text-sm font-bold text-[#1e293b] hover:border-[#448cff] hover:text-[#448cff] transition-all">
-                  {card.btn}
-                </button>
-              )}
+            ))}
+          </div>
+        </section>
+
+        {/* --- BOTTOM SECTION --- */}
+        <section className="max-w-7xl mx-auto px-4">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            {/* Why Choose Card */}
+            <div className="bg-white border border-gray-100 rounded-3xl p-10 md:p-12 shadow-sm">
+              <h3 className="text-2xl font-black text-[#1e293b] mb-8">
+                Why Choose SHINE & SPAN?
+              </h3>
+              <ul className="space-y-5">
+                {[
+                  "Free, no-obligation quotes",
+                  "Same-day response to inquiries",
+                  "Flexible scheduling options",
+                  "Fully insured and bonded",
+                  "100% satisfaction guarantee",
+                ].map((item, i) => (
+                  <li
+                    key={i}
+                    className="flex items-center text-gray-500 font-medium text-[15px]"
+                  >
+                    <span className="w-2 h-2 bg-[#448cff] rounded-full mr-4"></span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
             </div>
-          ))}
-        </div>
-      </section>
 
-      {/* --- BOTTOM SECTION --- */}
-      <section className="max-w-7xl mx-auto px-4">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          {/* Why Choose Card */}
-          <div className="bg-white border border-gray-100 rounded-3xl p-10 md:p-12 shadow-sm">
-            <h3 className="text-2xl font-black text-[#1e293b] mb-8">
-              Why Choose SHINE & SPAN?
-            </h3>
-            <ul className="space-y-5">
-              {[
-                "Free, no-obligation quotes",
-                "Same-day response to inquiries",
-                "Flexible scheduling options",
-                "Fully insured and bonded",
-                "100% satisfaction guarantee",
-              ].map((item, i) => (
-                <li
-                  key={i}
-                  className="flex items-center text-gray-500 font-medium text-[15px]"
+            {/* Need Immediate Service Card */}
+            <div className="bg-[#1b89ff] rounded-3xl p-10 md:p-12 text-white flex flex-col items-center justify-center text-center shadow-lg shadow-blue-200">
+              <h3 className="text-3xl font-black mb-6">
+                Need Immediate Service?
+              </h3>
+              <p className="text-blue-50 mb-10 text-lg leading-relaxed max-w-sm font-medium">
+                For urgent cleaning needs or same-day service, give us a call
+                directly.
+              </p>
+              <button className="bg-white text-[#1b89ff] px-8 py-4 rounded-xl font-bold flex items-center gap-3 hover:bg-blue-50 transition-all shadow-xl">
+                <svg
+                  className="w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
                 >
-                  <span className="w-2 h-2 bg-[#448cff] rounded-full mr-4"></span>
-                  {item}
-                </li>
-              ))}
-            </ul>
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2.5"
+                    d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+                  />
+                </svg>
+                Call (555) 123-4567
+              </button>
+            </div>
           </div>
-
-          {/* Need Immediate Service Card */}
-          <div className="bg-[#1b89ff] rounded-3xl p-10 md:p-12 text-white flex flex-col items-center justify-center text-center shadow-lg shadow-blue-200">
-            <h3 className="text-3xl font-black mb-6">
-              Need Immediate Service?
-            </h3>
-            <p className="text-blue-50 mb-10 text-lg leading-relaxed max-w-sm font-medium">
-              For urgent cleaning needs or same-day service, give us a call
-              directly.
-            </p>
-            <button className="bg-white text-[#1b89ff] px-8 py-4 rounded-xl font-bold flex items-center gap-3 hover:bg-blue-50 transition-all shadow-xl">
-              <svg
-                className="w-5 h-5"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2.5"
-                  d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
-                />
-              </svg>
-              Call (555) 123-4567
-            </button>
-          </div>
-        </div>
-      </section>
-      <FAQ></FAQ>
+        </section>
+        <FAQ></FAQ>
+      </div>
+      <Footer></Footer>
     </div>
   );
 };
