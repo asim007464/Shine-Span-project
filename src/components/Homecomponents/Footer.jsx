@@ -14,7 +14,6 @@ const Footer = () => {
   const serviceLinks = [
     "General House Cleaning",
     "Deep Cleaning",
-    "Carpet Cleaning",
     "Office Cleaning",
     "End of Tenancy",
   ];
