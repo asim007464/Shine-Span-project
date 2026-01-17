@@ -28,12 +28,7 @@ const Footer = () => {
           {/* Column 1: Brand & About */}
           <div className="space-y-6">
             <Link to="/" className="flex items-center">
-              <img
-                className="h-10 w-auto"
-                src="./websitelogo.png"
-                alt="Shine & Span Logo"
-              />
-              <span className="ml-3 text-xl font-extrabold text-[#1e293b] tracking-tight">
+              <span className="text-xl font-extrabold text-[#1e293b] tracking-tight">
                 Shine <span className="text-[#448cff]">&</span> Span
               </span>
             </Link>
