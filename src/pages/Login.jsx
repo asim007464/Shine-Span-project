@@ -177,12 +177,12 @@ const Login = () => {
             </p>
             <p className="text-slate-500">
               Want to join our team?{" "}
-              <a
-                href="#"
+              <Link
+                to="/cleanerapplication"
                 className="font-semibold text-blue-600 hover:underline"
               >
                 Apply here
-              </a>
+              </Link>
             </p>
           </div>
         </div>

@@ -9,6 +9,7 @@ import Services from "./pages/Services";
 import Contact from "./pages/Contact";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import CleanerApplication from "./pages/Cleanerapplication";
 const App = () => {
   return (
     <Router>
@@ -22,6 +23,10 @@ const App = () => {
         <Route path="/contact" element={<Contact />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />}></Route>
+        <Route
+          path="/cleanerapplication"
+          element={<CleanerApplication />}
+        ></Route>
 
         {/* Add your other routes here */}
       </Routes>
