@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { Eye, EyeOff, User, Sparkles, Shield, ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
+
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
 
-  // Mock data for demo credentials
   const demoCredentials = [
     {
       role: "Client",
@@ -27,13 +27,13 @@ const Login = () => {
   ];
 
   return (
-    <div className="flex min-h-screen bg-white font-sans text-slate-900">
+    // Changed min-h-screen to h-screen and added overflow-hidden to lock the page height
+    <div className="flex h-screen w-full bg-white font-sans text-slate-900 overflow-hidden">
       {/* LEFT SECTION: Image & Testimonial (Hidden on mobile) */}
-      <div className="relative hidden w-1/2 lg:block">
+      <div className="relative hidden w-1/2 lg:block h-full">
         <img
           src="./loginimg.jpg"
           alt="Cleaning Service"
-          /* Added brightness-50 to dim the image itself */
           className="absolute inset-0 h-full w-full object-cover brightness-50"
         />
         {/* Dark Overlay */}
@@ -41,7 +41,7 @@ const Login = () => {
 
         {/* Logo */}
         <div className="absolute left-10 top-10 flex items-center space-x-2 text-white">
-          <img src="./websitelogo.png" className="w-[100px]" alt="" />
+          <img src="./websitelogo.png" className="w-[100px]" alt="Logo" />
         </div>
 
         {/* Testimonial & Footer */}
@@ -60,12 +60,13 @@ const Login = () => {
       </div>
 
       {/* RIGHT SECTION: Login Form */}
-      <div className="flex w-full flex-col items-center justify-center px-6 py-12 lg:w-1/2 lg:px-20">
-        <div className="w-full max-w-[420px]">
+      {/* Added overflow-y-auto so if the screen is too small, the form scrolls inside its half */}
+      <div className="flex w-full flex-col items-center justify-center px-6 py-12 lg:w-1/2 lg:px-20 h-full overflow-y-auto">
+        <div className="w-full max-w-[420px] py-8">
           {/* Back button */}
           <Link
             to="/"
-            className="mb-8 flex items-center text-sm font-medium text-slate-500 hover:text-blue-600 transition-colors"
+            className="mb-8 inline-flex items-center text-sm font-medium text-slate-500 hover:text-blue-600 transition-colors"
           >
             <ArrowLeft size={16} className="mr-2" />
             Back to Home
