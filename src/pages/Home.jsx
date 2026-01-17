@@ -32,7 +32,10 @@ const Home = () => {
               in London <br />
               <span className="text-[#448cff]">You Can Trust</span>
             </h1>
-
+            <p className="text-xl md:text-2xl font-black text-white leading-[1.1] tracking-tight mb-8">
+              100% Satisfaction Guaranteed{" "}
+              <span className="text-green-600">✔</span>{" "}
+            </p>
             {/* 3. Description */}
             <p className="text-gray-400 text-lg md:text-xl leading-relaxed max-w-2xl mx-auto mb-12">
               From regular house cleaning to deep cleans and specialized
@@ -42,13 +45,9 @@ const Home = () => {
 
             {/* 4. Action Buttons */}
             <div className="flex flex-col sm:flex-row items-center justify-center gap-5">
-              <button className="btn-shiny w-full sm:w-auto bg-[#007BFF] hover:bg-[#015bbdec] text-white px-10 py-5 rounded-2xl font-bold text-[15px] shadow-xl shadow-blue-600/20  transition-all active:scale-95">
-                Book Now
-              </button>
-
               <Link
                 to="/services"
-                className="w-full sm:w-auto flex items-center justify-center gap-2 border border-gray-700 bg-gray-800/20 text-white px-10 py-5 rounded-2xl font-bold text-[15px] hover:bg-gray-800 transition-all group"
+                className="w-full sm:w-auto flex items-center justify-center gap-2 border border-gray-700 bg-gray-800/20 text-white px-20 py-5 rounded-2xl font-bold text-[15px] hover:bg-gray-800 transition-all group"
               >
                 View All Services
               </Link>

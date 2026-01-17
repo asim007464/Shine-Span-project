@@ -2,7 +2,7 @@ import React from "react";
 import Inclusions from "../components/Servicescomponents/Inclusions";
 import BookCTA from "../components/Servicescomponents/BookCTA";
 import Navbar from "../components/Homecomponents/Navbar";
-
+import { Link } from "react-router-dom";
 import Footer from "../components/Homecomponents/Footer";
 const Services = () => {
   const serviceData = [
@@ -198,9 +198,12 @@ const Services = () => {
 
                   {/* Action Button - mt-auto keeps it aligned at the bottom */}
                   <div className="mt-auto">
-                    <button className="w-full bg-[#007BFF] hover:bg-blue-700 text-white py-3.5 rounded-xl font-bold text-sm tracking-wide transition-all active:scale-95 shadow-md shadow-blue-50">
+                    <Link
+                      to="/register"
+                      className="w-full px-5 bg-[#007BFF] hover:bg-blue-700 text-white py-3.5 rounded-xl font-bold text-sm tracking-wide transition-all active:scale-95 shadow-md shadow-blue-50"
+                    >
                       Book Now
-                    </button>
+                    </Link>
                   </div>
                 </div>
               </div>

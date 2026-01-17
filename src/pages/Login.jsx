@@ -30,14 +30,19 @@ const Login = () => {
     // Changed min-h-screen to h-screen and added overflow-hidden to lock the page height
     <div className="flex h-screen w-full bg-white font-sans text-slate-900 overflow-hidden">
       {/* LEFT SECTION: Image & Testimonial (Hidden on mobile) */}
-      <div className="relative hidden w-1/2 lg:block h-full">
-        <img
-          src="./loginimg.jpg"
-          alt="Cleaning Service"
-          className="absolute inset-0 h-full w-full object-cover brightness-50"
+      {/* LEFT SECTION: Image & Testimonial (Hidden on mobile) */}
+      <div className="relative hidden w-1/2 lg:block h-full overflow-hidden">
+        {/* BACKGROUND DIV REPLACING THE IMG TAG */}
+        <div
+          className="absolute inset-0 h-full w-full bg-cover bg-right bg-no-repeat"
+          style={{
+            backgroundImage: "url('./image.png')",
+            filter: "brightness(0.5)",
+          }}
         />
-        {/* Dark Overlay */}
-        <div className="absolute inset-0 bg-black/40" />
+
+        {/* Dark Overlay (Already in your code, keeping it for extra depth) */}
+        <div className="absolute inset-0 bg-black/20" />
 
         {/* Logo */}
         <div className="absolute left-10 top-10 flex items-center space-x-2 text-white">
@@ -58,7 +63,6 @@ const Login = () => {
           </p>
         </div>
       </div>
-
       {/* RIGHT SECTION: Login Form */}
       {/* Added overflow-y-auto so if the screen is too small, the form scrolls inside its half */}
       <div className="flex w-full flex-col items-center justify-center px-6 py-12 lg:w-1/2 lg:px-20 h-full overflow-y-auto">
@@ -74,11 +78,11 @@ const Login = () => {
 
           <div className="mb-10 text-center">
             <h1 className="text-3xl font-bold tracking-tight text-slate-900">
-              Welcome Back
+              Welcome to
+              <span className=" ml-2 font-extrabold text-[#1e293b] tracking-tight">
+                Shine <span className="text-[#448cff]">&</span> Span
+              </span>
             </h1>
-            <p className="mt-2 text-sm text-slate-500">
-              Sign in to your SHINE & SPAN account
-            </p>
           </div>
 
           <form className="space-y-5" onSubmit={(e) => e.preventDefault()}>
@@ -127,7 +131,7 @@ const Login = () => {
           </form>
 
           {/* Demo Credentials */}
-          <div className="mt-10">
+          {/* <div className="mt-10">
             <div className="relative flex items-center justify-center">
               <div className="absolute inset-0 flex items-center">
                 <div className="w-full border-t border-slate-200"></div>
@@ -162,7 +166,7 @@ const Login = () => {
                 </div>
               ))}
             </div>
-          </div>
+          </div> */}
 
           {/* Footer Links */}
           <div className="mt-10 space-y-2 text-center text-sm">

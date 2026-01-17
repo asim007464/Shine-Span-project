@@ -10,12 +10,12 @@ import Contact from "./pages/Contact";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import CleanerApplication from "./pages/Cleanerapplication";
+import ChatBox from "./components/Homecomponents/ChatBox";
 const App = () => {
   return (
     <Router>
       {/* Add ScrollToTop here */}
       <ScrollToTop />
-
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
@@ -30,6 +30,7 @@ const App = () => {
 
         {/* Add your other routes here */}
       </Routes>
+      <ChatBox></ChatBox>
     </Router>
   );
 };

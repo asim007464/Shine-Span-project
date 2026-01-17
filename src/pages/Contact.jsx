@@ -73,7 +73,7 @@ const Contact = () => {
     },
     {
       title: "Business Hours",
-      value: "Mon-Fri: 8AM-6PM",
+      value: "Mon-Fri: 8AM-8PM",
       sub: "Sat-Sun: 9AM-5PM",
       icon: (
         <svg
@@ -114,7 +114,7 @@ const Contact = () => {
             {topCards.map((card, idx) => (
               <div
                 key={idx}
-                className="bg-white border border-gray-100 rounded-2xl p-4 flex flex-col items-center text-center shadow-sm"
+                className="bg-white border border-gray-100 rounded-2xl p-4 flex flex-col items-center text-center shadow-sm hover:shadow-2xl hover:shadow-blue-100/60 hover:-translate-y-3 transition-all duration-500"
               >
                 <div className="w-14 h-14 bg-blue-50 text-[#448cff] rounded-full flex items-center justify-center mb-6">
                   {card.icon}

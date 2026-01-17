@@ -131,18 +131,35 @@ const Register = () => {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                   <Section title="How many bedrooms?">
-                    <Counter
+                    <select
                       value={formData.bedrooms}
-                      onChange={(v) => updateData({ bedrooms: v })}
-                      label="bedrooms"
-                    />
+                      onChange={(e) =>
+                        updateData({ bedrooms: parseInt(e.target.value) })
+                      }
+                      className="form-input p-4 w-full border border-gray-400 rounded-sm appearance-none bg-white cursor-pointer"
+                    >
+                      {[1, 2, 3, 4, 5, 6].map((num) => (
+                        <option key={num} value={num}>
+                          {num} {num === 1 ? "bedroom" : "bedrooms"}
+                        </option>
+                      ))}
+                    </select>
                   </Section>
+
                   <Section title="How many bathrooms?">
-                    <Counter
+                    <select
                       value={formData.bathrooms}
-                      onChange={(v) => updateData({ bathrooms: v })}
-                      label="bathrooms"
-                    />
+                      onChange={(e) =>
+                        updateData({ bathrooms: parseInt(e.target.value) })
+                      }
+                      className="form-input p-4 w-full border border-gray-400 rounded-sm appearance-none bg-white cursor-pointer"
+                    >
+                      {[1, 2, 3, 4].map((num) => (
+                        <option key={num} value={num}>
+                          {num} {num === 1 ? "bathroom" : "bathrooms"}
+                        </option>
+                      ))}
+                    </select>
                   </Section>
                 </div>
 
@@ -179,8 +196,8 @@ const Register = () => {
                   title="How many hours?"
                   subtitle="Minimum duration is 2 hours."
                 >
-                  <div className="grid grid-cols-4 gap-4">
-                    {[2, 4, 6, 8].map((h) => (
+                  <div className="grid grid-cols-7 gap-4">
+                    {[2, 3, 4, 5, 6, 7, 8].map((h) => (
                       <button
                         key={h}
                         onClick={() => updateData({ duration: h })}
@@ -397,7 +414,10 @@ const Register = () => {
               <div className="space-y-8 animate-in fade-in slide-in-from-right-4 duration-500">
                 <div className="p-4 bg-blue-50 border border-blue-100 rounded-xl flex items-start space-x-3 text-sm text-blue-700">
                   <Info size={20} className="shrink-0 mt-0.5" />
-                  <p>You can edit, reschedule or cancel your cleans anytime.</p>
+                  <p>
+                    You can edit, reschedule or cancel your cleans with 24 hours
+                    notice.
+                  </p>
                 </div>
                 <div className="p-4 bg-green-50 border border-green-100 rounded-xl flex items-start space-x-3 text-sm text-green-700">
                   <Lock size={20} className="shrink-0 mt-0.5" />

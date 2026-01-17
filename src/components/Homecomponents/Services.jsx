@@ -5,7 +5,7 @@ const Services = () => {
     {
       title: "General House Cleaning",
       desc: "Regular cleaning service for busy homeowners looking for a consistently spotless environment.",
-      image: "https://shinespan.co.uk/assets/general-CeyxD9zf.jpg",
+      image: "general.png",
     },
     {
       title: "Deep Cleaning",
@@ -60,9 +60,12 @@ const Services = () => {
                   {service.desc}
                 </p>
 
-                <button className="w-full bg-[#448cff] hover:bg-blue-600 text-white py-4 rounded-2xl font-bold text-xs uppercase tracking-widest transition-all shadow-lg shadow-blue-100 active:scale-[0.98]">
+                <Link
+                  to="/register"
+                  className="w-full bg-[#448cff] hover:bg-blue-600 text-white py-4 rounded-2xl font-bold text-xs uppercase tracking-widest transition-all shadow-lg shadow-blue-100 active:scale-[0.98]"
+                >
                   Book Now
-                </button>
+                </Link>
               </div>
             </div>
           ))}

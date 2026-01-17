@@ -68,7 +68,7 @@ const About = () => {
                     className="w-full h-[500px] object-cover"
                   />
                   {/* Decorative Accent */}
-                  <div className="absolute bottom-0 right-0 bg-[#448cff] p-8 rounded-tl-3xl hidden md:block">
+                  <div className="absolute bottom-0 right-0 bg-[#5898ffb9] p-8 rounded-tl-3xl hidden md:block">
                     <p className="text-white font-bold text-xl text-center leading-tight">
                       100% Satisfaction <br /> Guaranteed
                     </p>

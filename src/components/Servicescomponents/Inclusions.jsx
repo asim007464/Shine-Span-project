@@ -75,7 +75,8 @@ const Inclusions = () => {
           </h2>
           <p className="text-gray-500 text-lg md:text-xl leading-relaxed font-medium">
             No matter which service you choose, you can expect the same high
-            standards and attention to detail that make us the trusted choice.
+            standards and attention to detail that make us the trusted choice.we
+            offer 100% customer satisfaction with reclean of areas you wish.
           </p>
         </div>
 
