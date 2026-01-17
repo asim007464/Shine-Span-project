@@ -1,10 +1,9 @@
 import React from "react";
-import { Link } from "react-router-dom"; // Import Link
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
-  // Navigation Data to make the code cleaner
   const quickLinks = [
     { name: "Home", path: "/" },
     { name: "About", path: "/about" },
@@ -23,7 +22,6 @@ const Footer = () => {
   return (
     <footer className="bg-white border-t border-gray-100 pt-20 pb-10 font-inter">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Main Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1fr] gap-12 mb-16">
           {/* Column 1: Brand & About */}
           <div className="space-y-6">
@@ -36,7 +34,7 @@ const Footer = () => {
               SHINE & SPAN CLEANING SERVICES LTD – Professional cleaning
               services for homes and businesses.
             </p>
-            {/* Social Icons - External links stay as <a> tags */}
+
             <div className="flex items-center space-x-4">
               {[
                 {
@@ -108,14 +106,37 @@ const Footer = () => {
             <ul className="space-y-4">
               {serviceLinks.map((service) => (
                 <li key={service}>
+                  {/* Changed path to /register */}
                   <Link
-                    to="/services"
+                    to="/register"
                     className="text-gray-500 hover:text-[#448cff] transition-colors text-[15px]"
                   >
                     {service}
                   </Link>
                 </li>
               ))}
+              {/* Added All Services Link */}
+              <li className="pt-2">
+                <Link
+                  to="/services"
+                  className="text-[#448cff] font-semibold hover:underline transition-colors text-[15px] flex items-center"
+                >
+                  All Services
+                  <svg
+                    className="w-4 h-4 ml-1"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M9 5l7 7-7 7"
+                    />
+                  </svg>
+                </Link>
+              </li>
             </ul>
           </div>
 
