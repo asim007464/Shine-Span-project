@@ -48,7 +48,7 @@ const Contact = () => {
     },
     {
       title: "Service Area",
-      value: "London",
+      value: "All in london",
       icon: (
         <svg
           className="w-6 h-6"
