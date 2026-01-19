@@ -170,7 +170,7 @@ const Login = () => {
 
           {/* Footer Links */}
           <div className="mt-10 space-y-2 text-center text-sm">
-            <p className="text-slate-500">
+            <p className="text-slate-500 ml-1">
               New Client?{" "}
               <Link
                 to="/register"
