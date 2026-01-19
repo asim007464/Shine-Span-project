@@ -292,21 +292,38 @@ const Register = () => {
                         "weekly",
                         "every 2 weeks",
                         "1 off deep clean",
-                        "Emergency same day clean",
-                      ].map((h) => (
-                        <button
-                          key={h}
-                          type="button"
-                          onClick={() => updateData({ frequency: h })}
-                          className={`p-4 rounded-xl border-2 font-bold transition-all text-sm ${
-                            formData.frequency === h
-                              ? "border-blue-600 bg-blue-50 text-blue-600"
-                              : "border-slate-200 text-slate-400 hover:border-slate-200"
-                          }`}
-                        >
-                          {h}
-                        </button>
-                      ))}
+                        "In case of  Emergency same day clean then contact us", // Shortened for cleaner UI
+                      ].map((h) => {
+                        const isEmergency = h
+                          .toLowerCase()
+                          .includes("emergency");
+
+                        return (
+                          <button
+                            key={h}
+                            type="button"
+                            onClick={() => updateData({ frequency: h })}
+                            className={`relative p-4 rounded-xl border-2 font-bold transition-all text-sm flex items-center justify-center ${
+                              formData.frequency === h
+                                ? isEmergency
+                                  ? "border-red-600 bg-red-600 text-white shadow-lg shadow-red-200" // Emergency Active
+                                  : "border-blue-600 bg-blue-50 text-blue-600" // Normal Active
+                                : isEmergency
+                                  ? "border-red-200 text-red-500 bg-red-50/50 hover:border-red-500 hover:bg-red-50" // Emergency Idle
+                                  : "border-slate-200 text-slate-400 hover:border-slate-200" // Normal Idle
+                            }`}
+                          >
+                            <span className="text-center">{h}</span>
+
+                            {/* Pulsing "Urgent" label instead of an icon */}
+                            {isEmergency && formData.frequency !== h && (
+                              <span className="absolute -top-2.5 -right-2 bg-red-500 text-white text-[9px] uppercase tracking-wider px-2 py-0.5 rounded-full animate-pulse shadow-sm border border-white">
+                                Urgent
+                              </span>
+                            )}
+                          </button>
+                        );
+                      })}
                     </div>
                   </div>
                 </Section>
