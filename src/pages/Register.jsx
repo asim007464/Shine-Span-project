@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react"; // 1. Added useEffect here
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -25,19 +25,22 @@ import Footer from "../components/Homecomponents/Footer";
 const Register = () => {
   const [step, setStep] = useState(1);
 
+  // --- SCROLL TO TOP FUNCTIONALITY ---
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [step]);
+
   // --- Date Logic for Constraints ---
   const today = new Date().toISOString().split("T")[0];
   const now = new Date();
-  // Get the last day of the next month
   const lastDayNextMonth = new Date(now.getFullYear(), now.getMonth() + 2, 0)
     .toISOString()
     .split("T")[0];
 
   // --- Centralized Form State ---
   const [formData, setFormData] = useState({
-    // Step 1: Cleaning
     postcode: "",
-    serviceType: [], // Initialized as array for multiple selection
+    serviceType: [],
     propertyType: "",
     bedrooms: 1,
     bathrooms: 1,
@@ -47,13 +50,9 @@ const Register = () => {
     frequency: "Weekly",
     email: "abc@gmail.com",
     details: "",
-
-    // Step 2: Time
     arrivalTime: "09:00",
     accessMethod: "Spare keys",
-    firstCleanDate: today, // Defaults to today
-
-    // Step 3: Address
+    firstCleanDate: new Date(),
     firstName: "asim",
     surname: "asdf",
     phone: "030195207928",
@@ -61,8 +60,6 @@ const Register = () => {
     addressLine2: "asdfadsf",
     city: "adsffsa",
     addressPostcode: "SW1A 0AA",
-
-    // Step 4: Payment
     cardNumber: "",
     expiry: "",
     cvc: "",
@@ -111,7 +108,7 @@ const Register = () => {
                   <input
                     type="text"
                     placeholder="Postcode"
-                    className="form-input p-4 border-gray-400 border w-full md:w-full rounded-sm"
+                    className="form-input p-4 hover:border-gray-500 border-gray-300 border w-full md:w-full rounded-sm"
                     onChange={(e) => updateData({ postcode: e.target.value })}
                     value={formData.postcode}
                   />
@@ -152,7 +149,7 @@ const Register = () => {
                     onChange={(e) =>
                       updateData({ propertyType: e.target.value })
                     }
-                    className="form-input p-4 w-full border border-gray-400 rounded-sm appearance-none bg-white cursor-pointer"
+                    className="form-input p-4 w-full  hover:border-gray-500 border-gray-300 border rounded-sm appearance-none bg-white cursor-pointer"
                   >
                     <option value="" disabled>
                       Select property type
@@ -171,7 +168,7 @@ const Register = () => {
                       onChange={(e) =>
                         updateData({ bedrooms: parseInt(e.target.value) })
                       }
-                      className="form-input p-4 w-full border border-gray-400 rounded-sm appearance-none bg-white cursor-pointer"
+                      className="form-input p-4 w-full  hover:border-gray-500 border-gray-300 border rounded-sm appearance-none bg-white cursor-pointer"
                     >
                       {[1, 2, 3, 4, 5, 6].map((num) => (
                         <option key={num} value={num}>
@@ -187,7 +184,7 @@ const Register = () => {
                       onChange={(e) =>
                         updateData({ bathrooms: parseInt(e.target.value) })
                       }
-                      className="form-input p-4 w-full border border-gray-400 rounded-sm appearance-none bg-white cursor-pointer"
+                      className="form-input p-4 w-full  hover:border-gray-500 border-gray-300 border rounded-sm appearance-none bg-white cursor-pointer"
                     >
                       {[1, 2, 3, 4].map((num) => (
                         <option key={num} value={num}>
@@ -253,7 +250,6 @@ const Register = () => {
                   subtitle="Includes sprays and cloths. Your cleaner cannot bring a vacuum, mop or bucket."
                 >
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    {/* Option 1: Bring Products */}
                     <button
                       onClick={() =>
                         updateData({ products: "Bring cleaning products" })
@@ -271,7 +267,6 @@ const Register = () => {
                       />
                     </button>
 
-                    {/* Option 2: I will provide */}
                     <button
                       onClick={() => updateData({ products: "I will provide" })}
                       className={`relative p-8 flex items-center justify-center border-2 rounded-2xl font-bold transition-all text-[15px] ${
@@ -297,15 +292,13 @@ const Register = () => {
                         "weekly",
                         "every 2 weeks",
                         "1 off deep clean",
-                        "In case of  Emergency same day clean then contact us",
+                        "Emergency same day clean",
                       ].map((h) => (
                         <button
                           key={h}
-                          type="button" // Prevent form submission
-                          // 1. Update 'frequency' instead of 'duration'
+                          type="button"
                           onClick={() => updateData({ frequency: h })}
                           className={`p-4 rounded-xl border-2 font-bold transition-all text-sm ${
-                            // 2. Check 'frequency' for the active state
                             formData.frequency === h
                               ? "border-blue-600 bg-blue-50 text-blue-600"
                               : "border-slate-200 text-slate-400 hover:border-slate-200"
@@ -322,7 +315,7 @@ const Register = () => {
                   <input
                     type="email"
                     value={formData.email}
-                    className="form-input w-full p-4 border-gray-400 border w-full md:w-full rounded-sm"
+                    className="form-input w-full p-4 hover:border-gray-500 border-gray-300 border md:w-full rounded-sm"
                     onChange={(e) => updateData({ email: e.target.value })}
                   />
                 </Section>
@@ -336,16 +329,12 @@ const Register = () => {
                   What time would you like your cleaner to arrive?
                 </h1>
                 <div>
-                  {/* --- ADD THIS BANNER HERE --- */}
                   <div className="w-full mb-4 bg-slate-50 border border-slate-100 p-4 rounded-xl text-center font-medium text-slate-500">
                     Daytime 7:00 am - 5:00 pm
                   </div>
 
                   <Section title="First cleaning date">
                     <div className="relative ">
-                      {/* 1. Place the Icon here with z-10 so it stays on top */}
-
-                      {/* 2. The DatePicker with pl-12 to make room for the icon */}
                       <DatePicker
                         selected={formData.firstCleanDate}
                         onChange={(date) =>
@@ -429,7 +418,7 @@ const Register = () => {
                     <input
                       type="text"
                       value={formData.firstName}
-                      className="form-input w-full"
+                      className="form-input w-full  hover:border-gray-500 border-gray-300 border p-2"
                       onChange={(e) =>
                         updateData({ firstName: e.target.value })
                       }
@@ -442,7 +431,7 @@ const Register = () => {
                     <input
                       type="text"
                       value={formData.surname}
-                      className="form-input w-full"
+                      className="form-input w-full hover:border-gray-500 border-gray-300 border p-2"
                       onChange={(e) => updateData({ surname: e.target.value })}
                     />
                   </div>
@@ -454,7 +443,7 @@ const Register = () => {
                   <input
                     type="text"
                     value={formData.phone}
-                    className="form-input w-full"
+                    className="form-input w-full hover:border-gray-500 border-gray-300 border p-2"
                     onChange={(e) => updateData({ phone: e.target.value })}
                   />
                 </div>
@@ -465,7 +454,7 @@ const Register = () => {
                   <input
                     type="text"
                     value={formData.addressLine1}
-                    className="form-input w-full"
+                    className="form-input w-full hover:border-gray-500 border-gray-300 border p-2"
                     onChange={(e) =>
                       updateData({ addressLine1: e.target.value })
                     }
@@ -478,7 +467,7 @@ const Register = () => {
                   <input
                     type="text"
                     value={formData.addressLine2}
-                    className="form-input w-full"
+                    className="form-input w-full hover:border-gray-500 border-gray-300 border p-2"
                     onChange={(e) =>
                       updateData({ addressLine2: e.target.value })
                     }
@@ -491,7 +480,7 @@ const Register = () => {
                   <input
                     type="text"
                     value={formData.city}
-                    className="form-input w-full"
+                    className="form-input w-full hover:border-gray-500 border-gray-300 border p-2"
                     onChange={(e) => updateData({ city: e.target.value })}
                   />
                 </div>
@@ -502,7 +491,7 @@ const Register = () => {
                   <input
                     type="text"
                     value={formData.addressPostcode}
-                    className="form-input  w-full bg-slate-50"
+                    className="form-input  w-full bg-slate-50 hover:border-gray-500 border-gray-300 border p-2"
                     onChange={(e) =>
                       updateData({ addressPostcode: e.target.value })
                     }
@@ -524,9 +513,7 @@ const Register = () => {
                 <div className="p-4 bg-green-50 border border-green-100 rounded-xl flex items-start space-x-3 text-sm text-green-700">
                   <Lock size={20} className="shrink-0 mt-0.5" />
                   <p>
-                    We use <strong>Stripe</strong> for secure payments. It is
-                    one of the world's best payment platforms, ensuring your
-                    data is protected.
+                    We use <strong>Stripe</strong> for secure payments.
                   </p>
                 </div>
 
@@ -569,8 +556,7 @@ const Register = () => {
                       className="mt-1 w-5 h-5 rounded border-slate-300 text-blue-600"
                     />
                     <span className="text-sm text-slate-500 leading-relaxed">
-                      I accept the terms and conditions, have read the privacy
-                      policy...
+                      I accept the terms and conditions.
                     </span>
                   </label>
                 </div>
@@ -591,9 +577,7 @@ const Register = () => {
                       : "Select service"
                   }
                 />
-
                 <SummaryRow label="Products" value={formData.products} />
-
                 <SummaryRow label="Property" value={formData.propertyType} />
                 <SummaryRow
                   label="Duration"
@@ -602,7 +586,7 @@ const Register = () => {
                 <SummaryRow label="Frequency" value={formData.frequency} />
                 <SummaryRow
                   label="First Clean"
-                  value={formData.firstCleanDate}
+                  value={formData.firstCleanDate.toString().slice(0, 15)}
                 />
 
                 {step >= 3 && (
@@ -611,9 +595,8 @@ const Register = () => {
                       Address
                     </p>
                     <p className="text-sm text-slate-700 leading-tight">
-                      {formData.addressLine1}, {formData.addressLine2}
-                      <br />
-                      {formData.city}, {formData.addressPostcode}
+                      {formData.addressLine1}, {formData.city},{" "}
+                      {formData.addressPostcode}
                     </p>
                   </div>
                 )}
@@ -655,35 +638,17 @@ const Register = () => {
 
       <Footer />
 
-      {/* CSS Styles */}
       <style>{`
-        .form-input { 
-          @apply p-3.5 border border-slate-200 rounded-xl outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-500/5 transition-all; 
-        }
-        
-        /* Premium Date Input Styling */
-        input[type="date"]::-webkit-calendar-picker-indicator {
-          cursor: pointer;
-          border-radius: 4px;
-          margin-right: 2px;
-          opacity: 0.6;
-          filter: invert(0.5);
-        }
-
+        .form-input { @apply p-3.5 border border-slate-200 rounded-xl outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-500/5 transition-all; }
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .react-datepicker-wrapper { width: 100%; }
-.react-datepicker { 
-  display: flex !important; 
-  border: none !important; 
-  box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); 
-}
+        .react-datepicker { display: flex !important; border: none !important; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); }
       `}</style>
     </div>
   );
 };
 
-// --- Modular Sub-Components ---
-
+// ... (Sub-components: StepItem, Line, Section, Chip, ExtraCard, FrequencyCard, TimeGrid, SummaryRow) ...
 const StepItem = ({ label, status }) => (
   <div className="flex items-center space-x-2 shrink-0">
     {status === "done" ? (
@@ -825,5 +790,4 @@ const SummaryRow = ({ label, value }) => (
     <span className="font-bold text-slate-800 text-right">{value || "-"}</span>
   </div>
 );
-
 export default Register;
