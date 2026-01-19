@@ -171,7 +171,7 @@ const Login = () => {
           {/* Footer Links */}
           <div className="mt-10 space-y-2 text-center text-sm">
             <p className="text-slate-500">
-              New client?{" "}
+              New Client?{" "}
               <Link
                 to="/register"
                 className="font-semibold text-blue-600 hover:underline"
