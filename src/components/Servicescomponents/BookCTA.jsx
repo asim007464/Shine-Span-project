@@ -5,11 +5,11 @@ const BookCTA = () => {
   return (
     <section className="bg-[#1b89ff] py-20 px-4 text-center font-jakarta">
       <div className="max-w-6xl flex flex-col justify-center items-center  mx-auto">
-        <h2 className="text-white max-w-2xl text-4xl md:text-5xl font-black mb-6 tracking-tight">
-          Quality Service & Fair Wages: Our Pricing Explained
+        <h2 className="text-white max-w-2xl text-4xl md:text-5xl font-black mb-6 leading-13.5 tracking-tight">
+          Quality Service & Fair Wages Our Pricing Explained
         </h2>
 
-        <p className="text-blue-50  text-lg md:text-xl mb-10 leading-relaxed  font-medium opacity-90">
+        <p className="text-blue-50  text-lg md:text-xl mb-10 leading-relaxed   font-medium opacity-90">
           We put quality first – and 58% of people agree it’s the most important
           factor when choosing a cleaning service. That’s why we charge
           appropriate rates: we deliver premium results and invest heavily in
