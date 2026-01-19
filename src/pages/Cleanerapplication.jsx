@@ -34,53 +34,67 @@ const CleanerApplication = () => {
     experienceTypes: [],
     availability: {
       Monday: {
-        enabled: true,
-        s1_start: "07:00",
-        s1_end: "12:00",
-        s2_start: "16:00",
-        s2_end: "20:00",
+        enabled: false,
+        s1_start: "",
+        s1_end: "",
+        s2_start: "",
+        s2_end: "",
+        s3_start: "",
+        s3_end: "",
       },
       Tuesday: {
-        enabled: true,
-        s1_start: "07:00",
-        s1_end: "12:00",
-        s2_start: "16:00",
-        s2_end: "20:00",
+        enabled: false,
+        s1_start: "",
+        s1_end: "",
+        s2_start: "",
+        s2_end: "",
+        s3_start: "",
+        s3_end: "",
       },
       Wednesday: {
-        enabled: true,
+        enabled: false,
         s1_start: "",
         s1_end: "",
         s2_start: "",
         s2_end: "",
+        s3_start: "",
+        s3_end: "",
       },
       Thursday: {
-        enabled: true,
+        enabled: false,
         s1_start: "",
         s1_end: "",
         s2_start: "",
         s2_end: "",
+        s3_start: "",
+        s3_end: "",
       },
       Friday: {
-        enabled: true,
+        enabled: false,
         s1_start: "",
         s1_end: "",
         s2_start: "",
         s2_end: "",
+        s3_start: "",
+        s3_end: "",
       },
       Saturday: {
-        enabled: true,
+        enabled: false,
         s1_start: "",
         s1_end: "",
         s2_start: "",
         s2_end: "",
+        s3_start: "",
+        s3_end: "",
       },
       Sunday: {
-        enabled: true,
+        enabled: false,
         s1_start: "",
         s1_end: "",
         s2_start: "",
         s2_end: "",
+        s3_start: "",
+        s3_end: "",
       },
     },
     // Added Eligibility
@@ -433,16 +447,16 @@ const CleanerApplication = () => {
 
                         {/* --- SHIFT SELECTION AREA --- */}
                         {formData.availability[day].enabled && (
-                          <div className="p-6 grid grid-cols-1 md:grid-cols-2 gap-8 animate-in fade-in zoom-in-95 duration-300">
-                            {/* SHIFT 1 */}
+                          <div className="p-6 grid grid-cols-1 md:grid-cols-3 gap-6 animate-in fade-in zoom-in-95 duration-300">
+                            {/* --- SHIFT 1 --- */}
                             <div className="space-y-3">
                               <div className="flex items-center space-x-2 text-[#448cff]">
                                 <Clock size={14} strokeWidth={3} />
-                                <p className="text-[11px] font-black uppercase tracking-widest">
-                                  Availability
+                                <p className="text-[10px] font-black uppercase tracking-widest">
+                                  Shift 1 (Morning)
                                 </p>
                               </div>
-                              <div className="flex items-center bg-white border border-gray-300 rounded-sm overflow-hidden focus-within:border-[#448cff] transition-colors">
+                              <div className="flex items-center bg-white border border-gray-400 rounded-sm overflow-hidden focus-within:border-[#448cff] transition-colors">
                                 <select
                                   className="flex-1 p-3 text-sm font-bold bg-transparent outline-none cursor-pointer appearance-none text-center"
                                   value={formData.availability[day].s1_start}
@@ -454,7 +468,7 @@ const CleanerApplication = () => {
                                     )
                                   }
                                 >
-                                  <option value="">Start</option>
+                                  <option value="">00</option>
                                   {timeOptions.map((t) => (
                                     <option key={t} value={t}>
                                       {t}
@@ -473,7 +487,7 @@ const CleanerApplication = () => {
                                     )
                                   }
                                 >
-                                  <option value="">End</option>
+                                  <option value="">00</option>
                                   {timeOptions.map((t) => (
                                     <option key={t} value={t}>
                                       {t}
@@ -483,15 +497,15 @@ const CleanerApplication = () => {
                               </div>
                             </div>
 
-                            {/* SHIFT 2 */}
+                            {/* --- SHIFT 2 --- */}
                             <div className="space-y-3">
-                              <div className="flex items-center space-x-2 text-[#448cff]">
+                              <div className="flex items-center space-x-2 text-orange-500">
                                 <Clock size={14} strokeWidth={3} />
-                                <p className="text-[11px] font-black uppercase tracking-widest">
-                                  Availability
+                                <p className="text-[10px] font-black uppercase tracking-widest">
+                                  Shift 2 (Afternoon)
                                 </p>
                               </div>
-                              <div className="flex items-center bg-white border border-gray-300 rounded-sm overflow-hidden focus-within:border-orange-500 transition-colors">
+                              <div className="flex items-center bg-white border border-gray-400 rounded-sm overflow-hidden focus-within:border-orange-500 transition-colors">
                                 <select
                                   className="flex-1 p-3 text-sm font-bold bg-transparent outline-none cursor-pointer appearance-none text-center"
                                   value={formData.availability[day].s2_start}
@@ -503,7 +517,7 @@ const CleanerApplication = () => {
                                     )
                                   }
                                 >
-                                  <option value="">Start</option>
+                                  <option value="">00</option>
                                   {timeOptions.map((t) => (
                                     <option key={t} value={t}>
                                       {t}
@@ -522,7 +536,56 @@ const CleanerApplication = () => {
                                     )
                                   }
                                 >
-                                  <option value="">End</option>
+                                  <option value="">00</option>
+                                  {timeOptions.map((t) => (
+                                    <option key={t} value={t}>
+                                      {t}
+                                    </option>
+                                  ))}
+                                </select>
+                              </div>
+                            </div>
+
+                            {/* --- SHIFT 3 --- */}
+                            <div className="space-y-3">
+                              <div className="flex items-center space-x-2 text-green-600">
+                                <Clock size={14} strokeWidth={3} />
+                                <p className="text-[10px] font-black uppercase tracking-widest">
+                                  Shift 3 (Evening)
+                                </p>
+                              </div>
+                              <div className="flex items-center bg-white border border-gray-400 rounded-sm overflow-hidden focus-within:border-green-600 transition-colors">
+                                <select
+                                  className="flex-1 p-3 text-sm font-bold bg-transparent outline-none cursor-pointer appearance-none text-center"
+                                  value={formData.availability[day].s3_start}
+                                  onChange={(e) =>
+                                    updateAvailability(
+                                      day,
+                                      "s3_start",
+                                      e.target.value,
+                                    )
+                                  }
+                                >
+                                  <option value="">00</option>
+                                  {timeOptions.map((t) => (
+                                    <option key={t} value={t}>
+                                      {t}
+                                    </option>
+                                  ))}
+                                </select>
+                                <div className="h-8 w-px bg-gray-200"></div>
+                                <select
+                                  className="flex-1 p-3 text-sm font-bold bg-transparent outline-none cursor-pointer appearance-none text-center"
+                                  value={formData.availability[day].s3_end}
+                                  onChange={(e) =>
+                                    updateAvailability(
+                                      day,
+                                      "s3_end",
+                                      e.target.value,
+                                    )
+                                  }
+                                >
+                                  <option value="">00</option>
                                   {timeOptions.map((t) => (
                                     <option key={t} value={t}>
                                       {t}
