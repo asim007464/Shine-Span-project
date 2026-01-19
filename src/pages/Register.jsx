@@ -358,13 +358,6 @@ const Register = () => {
                           updateData({ firstCleanDate: date })
                         }
                         minDate={new Date()}
-                        maxDate={
-                          new Date(
-                            new Date().getFullYear(),
-                            new Date().getMonth() + 2,
-                            0,
-                          )
-                        }
                         monthsShown={2}
                         className="form-input w-full  rounded-sm border border-gray-200 p-4 outline-none bg-white"
                       />
