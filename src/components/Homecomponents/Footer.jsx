@@ -188,9 +188,7 @@ const Footer = () => {
                   <p className="text-xs text-gray-400 font-bold uppercase tracking-widest mb-1">
                     Email
                   </p>
-                  <p className="text-gray-700 font-semibold">
-                    cleaning@shinespan.co.uk
-                  </p>
+                  <p className="text-gray-700 font-semibold">abc@gmail.com</p>
                 </div>
               </div>
             </div>

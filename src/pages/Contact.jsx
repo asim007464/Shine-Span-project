@@ -28,7 +28,7 @@ const Contact = () => {
     },
     {
       title: "Email",
-      value: "cleaning@shinespan.co.uk",
+      value: "abc@gmail.com",
       btn: "Send Email",
       icon: (
         <svg
