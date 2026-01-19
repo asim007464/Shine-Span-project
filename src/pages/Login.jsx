@@ -8,19 +8,19 @@ const Login = () => {
   const demoCredentials = [
     {
       role: "Client",
-      email: "client@shinespan.com",
+      email: "abc@gmail.com",
       pass: "client123",
       icon: <User size={18} />,
     },
     {
       role: "Cleaner",
-      email: "cleaner@shinespan.com",
+      email: "abc@gmail.com",
       pass: "cleaner123",
       icon: <Sparkles size={18} />,
     },
     {
       role: "Admin",
-      email: "admin@shinespan.com",
+      email: "abc@gmail.com",
       pass: "admin123",
       icon: <Shield size={18} />,
     },

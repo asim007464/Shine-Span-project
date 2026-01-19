@@ -261,10 +261,6 @@ const Register = () => {
                       }`}
                     >
                       Bring cleaning products (+ £12.00)
-                      <HelpCircle
-                        size={18}
-                        className="ml-2 text-slate-300 shrink-0"
-                      />
                     </button>
 
                     <button
@@ -276,10 +272,6 @@ const Register = () => {
                       }`}
                     >
                       I will provide
-                      <HelpCircle
-                        size={18}
-                        className="ml-2 text-slate-300 shrink-0"
-                      />
                     </button>
                   </div>
                 </Section>
@@ -306,21 +298,16 @@ const Register = () => {
                             className={`relative p-4 rounded-xl border-2 font-bold transition-all text-sm flex items-center justify-center ${
                               formData.frequency === h
                                 ? isEmergency
-                                  ? "border-red-600 bg-red-600 text-white shadow-lg shadow-red-200" // Emergency Active
+                                  ? "border-blue-600 bg-blue-50 text-blue-600"
                                   : "border-blue-600 bg-blue-50 text-blue-600" // Normal Active
                                 : isEmergency
-                                  ? "border-red-200 text-red-500 bg-red-50/50 hover:border-red-500 hover:bg-red-50" // Emergency Idle
+                                  ? "border-slate-200 text-slate-400 hover:border-slate-200"
                                   : "border-slate-200 text-slate-400 hover:border-slate-200" // Normal Idle
                             }`}
                           >
                             <span className="text-center">{h}</span>
 
                             {/* Pulsing "Urgent" label instead of an icon */}
-                            {isEmergency && formData.frequency !== h && (
-                              <span className="absolute -top-2.5 -right-2 bg-red-500 text-white text-[9px] uppercase tracking-wider px-2 py-0.5 rounded-full animate-pulse shadow-sm border border-white">
-                                Urgent
-                              </span>
-                            )}
                           </button>
                         );
                       })}

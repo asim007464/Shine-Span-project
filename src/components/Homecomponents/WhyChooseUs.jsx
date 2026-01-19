@@ -42,7 +42,7 @@ const WhyChooseUs = () => {
     },
     {
       title: "Flexible Scheduling",
-      desc: "We clean from 8AM to 8PM. One-time, weekly, or monthly.",
+      desc: "We clean from 7AM to 8PM. One-time, weekly, or monthly.",
       icon: (
         <svg
           className="w-8 h-8"
