@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+
 import {
   Plus,
   Minus,
@@ -22,25 +25,33 @@ import Footer from "../components/Homecomponents/Footer";
 const Register = () => {
   const [step, setStep] = useState(1);
 
+  // --- Date Logic for Constraints ---
+  const today = new Date().toISOString().split("T")[0];
+  const now = new Date();
+  // Get the last day of the next month
+  const lastDayNextMonth = new Date(now.getFullYear(), now.getMonth() + 2, 0)
+    .toISOString()
+    .split("T")[0];
+
   // --- Centralized Form State ---
   const [formData, setFormData] = useState({
     // Step 1: Cleaning
     postcode: "",
-    serviceType: "General House Cleaning",
+    serviceType: [], // Initialized as array for multiple selection
     propertyType: "",
-    bedrooms: 0,
-    bathrooms: 0,
+    bedrooms: 1,
+    bathrooms: 1,
     extras: [],
     duration: 4,
     products: "I will provide",
     frequency: "Weekly",
-    email: "igwereinhard@gmail.com",
+    email: "abc@gmail.com",
     details: "",
 
     // Step 2: Time
     arrivalTime: "09:00",
     accessMethod: "Spare keys",
-    firstCleanDate: "January 18th, 2026",
+    firstCleanDate: today, // Defaults to today
 
     // Step 3: Address
     firstName: "asim",
@@ -68,9 +79,9 @@ const Register = () => {
     <div className="min-h-screen bg-white font-sans text-slate-800">
       <Navbar />
 
-      <main className="max-w-6xl mx-auto px-6 py-12">
+      <main className="max-w-6xl  mx-auto px-6 py-12">
         {/* --- 1. Progress Stepper --- */}
-        <div className="flex items-center justify-center space-x-4 mb-16 overflow-x-auto pb-4 no-scrollbar">
+        <div className="flex items-center  justify-center space-x-2 md:space-x-4 mb-16 overflow-x-auto pb-4 no-scrollbar">
           <StepItem label="Cleaning" status={step > 1 ? "done" : "active"} />
           <Line />
           <StepItem
@@ -100,7 +111,7 @@ const Register = () => {
                   <input
                     type="text"
                     placeholder="Postcode"
-                    className="form-input w-full md:w-2/3"
+                    className="form-input p-4 border-gray-400 border w-full md:w-full rounded-sm"
                     onChange={(e) => updateData({ postcode: e.target.value })}
                     value={formData.postcode}
                   />
@@ -122,15 +133,39 @@ const Register = () => {
                       <Chip
                         key={opt}
                         label={opt}
-                        active={formData.serviceType === opt}
-                        onClick={() => updateData({ serviceType: opt })}
+                        active={formData.serviceType.includes(opt)}
+                        onClick={() => {
+                          const current = formData.serviceType;
+                          const updated = current.includes(opt)
+                            ? current.filter((s) => s !== opt)
+                            : [...current, opt];
+                          updateData({ serviceType: updated });
+                        }}
                       />
                     ))}
                   </div>
                 </Section>
 
+                <Section title="Property Type">
+                  <select
+                    value={formData.propertyType}
+                    onChange={(e) =>
+                      updateData({ propertyType: e.target.value })
+                    }
+                    className="form-input p-4 w-full border border-gray-400 rounded-sm appearance-none bg-white cursor-pointer"
+                  >
+                    <option value="" disabled>
+                      Select property type
+                    </option>
+                    <option value="House">House</option>
+                    <option value="Apartment">Apartment</option>
+                    <option value="Office">Office</option>
+                    <option value="Commercial Space">Commercial Space</option>
+                  </select>
+                </Section>
+
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                  <Section title="How many bedrooms?">
+                  <Section title="How many rooms?">
                     <select
                       value={formData.bedrooms}
                       onChange={(e) =>
@@ -140,7 +175,7 @@ const Register = () => {
                     >
                       {[1, 2, 3, 4, 5, 6].map((num) => (
                         <option key={num} value={num}>
-                          {num} {num === 1 ? "bedroom" : "bedrooms"}
+                          {num} {num === 1 ? "Room" : "Rooms"}
                         </option>
                       ))}
                     </select>
@@ -156,14 +191,14 @@ const Register = () => {
                     >
                       {[1, 2, 3, 4].map((num) => (
                         <option key={num} value={num}>
-                          {num} {num === 1 ? "bathroom" : "bathrooms"}
+                          {num} {num === 1 ? "Bathroom" : "Bathrooms"}
                         </option>
                       ))}
                     </select>
                   </Section>
                 </div>
 
-                <Section title="Extra Tasks">
+                <Section title="More Tasks">
                   <div className="grid grid-cols-2 gap-4">
                     <ExtraCard
                       label="Inside fridge"
@@ -193,10 +228,10 @@ const Register = () => {
                 </Section>
 
                 <Section
-                  title="How many hours?"
-                  subtitle="Minimum duration is 2 hours."
+                  title="How many hours of cleaning would you like?"
+                  subtitle="The minimum duration is 2 hours. We will recommend the exact number of cleaning hours once we have done the first cleaning."
                 >
-                  <div className="grid grid-cols-7 gap-4">
+                  <div className="grid grid-cols-3 md:grid-cols-7 gap-4">
                     {[2, 3, 4, 5, 6, 7, 8].map((h) => (
                       <button
                         key={h}
@@ -213,24 +248,73 @@ const Register = () => {
                   </div>
                 </Section>
 
-                <Section title="How often?">
+                <Section
+                  title="Cleaning products"
+                  subtitle="Includes sprays and cloths. Your cleaner cannot bring a vacuum, mop or bucket."
+                >
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    {/* Option 1: Bring Products */}
+                    <button
+                      onClick={() =>
+                        updateData({ products: "Bring cleaning products" })
+                      }
+                      className={`relative p-8 flex items-center justify-center border-2 rounded-2xl font-bold transition-all text-[15px] ${
+                        formData.products === "Bring cleaning products"
+                          ? "border-blue-600 bg-blue-50 text-blue-700"
+                          : "border-slate-100 hover:border-slate-200 text-slate-700"
+                      }`}
+                    >
+                      Bring cleaning products (+ £12.00)
+                      <HelpCircle
+                        size={18}
+                        className="ml-2 text-slate-300 shrink-0"
+                      />
+                    </button>
+
+                    {/* Option 2: I will provide */}
+                    <button
+                      onClick={() => updateData({ products: "I will provide" })}
+                      className={`relative p-8 flex items-center justify-center border-2 rounded-2xl font-bold transition-all text-[15px] ${
+                        formData.products === "I will provide"
+                          ? "border-blue-600 bg-blue-50 text-blue-700"
+                          : "border-slate-100 hover:border-slate-200 text-slate-700"
+                      }`}
+                    >
+                      I will provide
+                      <HelpCircle
+                        size={18}
+                        className="ml-2 text-slate-300 shrink-0"
+                      />
+                    </button>
+                  </div>
+                </Section>
+                <Section title="How often would like house/office cleaning?">
                   <div className="space-y-4">
-                    <FrequencyCard
-                      title="Recurring"
-                      active={formData.frequency === "Weekly"}
-                      onClick={() => updateData({ frequency: "Weekly" })}
-                      bullets={[
-                        "Get a 5-star clean weekly",
-                        "Same cleaner every time",
-                        "Flexible & commitment-free",
-                      ]}
-                    />
-                    <FrequencyCard
-                      title="One-off deep clean"
-                      active={formData.frequency === "One-off"}
-                      onClick={() => updateData({ frequency: "One-off" })}
-                      bullets={["Ideal for big cleans", "Cleans on demand"]}
-                    />
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                      {[
+                        "daily",
+                        "twice a week",
+                        "weekly",
+                        "every 2 weeks",
+                        "1 off deep clean",
+                        "In case of  Emergency same day clean then contact us",
+                      ].map((h) => (
+                        <button
+                          key={h}
+                          type="button" // Prevent form submission
+                          // 1. Update 'frequency' instead of 'duration'
+                          onClick={() => updateData({ frequency: h })}
+                          className={`p-4 rounded-xl border-2 font-bold transition-all text-sm ${
+                            // 2. Check 'frequency' for the active state
+                            formData.frequency === h
+                              ? "border-blue-600 bg-blue-50 text-blue-600"
+                              : "border-slate-200 text-slate-400 hover:border-slate-200"
+                          }`}
+                        >
+                          {h}
+                        </button>
+                      ))}
+                    </div>
                   </div>
                 </Section>
 
@@ -238,7 +322,7 @@ const Register = () => {
                   <input
                     type="email"
                     value={formData.email}
-                    className="form-input w-full"
+                    className="form-input w-full p-4 border-gray-400 border w-full md:w-full rounded-sm"
                     onChange={(e) => updateData({ email: e.target.value })}
                   />
                 </Section>
@@ -251,25 +335,60 @@ const Register = () => {
                 <h1 className="text-3xl font-extrabold text-slate-900">
                   What time would you like your cleaner to arrive?
                 </h1>
-                <div className="w-full bg-slate-50 border border-slate-100 p-4 rounded-xl text-center font-medium text-slate-500">
-                  Daytime 09:00 - 17:00
-                </div>
+                <div>
+                  {/* --- ADD THIS BANNER HERE --- */}
+                  <div className="w-full mb-4 bg-slate-50 border border-slate-100 p-4 rounded-xl text-center font-medium text-slate-500">
+                    Daytime 7:00 am - 5:00 pm
+                  </div>
 
+                  <Section title="First cleaning date">
+                    <div className="relative ">
+                      {/* 1. Place the Icon here with z-10 so it stays on top */}
+
+                      {/* 2. The DatePicker with pl-12 to make room for the icon */}
+                      <DatePicker
+                        selected={formData.firstCleanDate}
+                        onChange={(date) =>
+                          updateData({ firstCleanDate: date })
+                        }
+                        minDate={new Date()}
+                        maxDate={
+                          new Date(
+                            new Date().getFullYear(),
+                            new Date().getMonth() + 2,
+                            0,
+                          )
+                        }
+                        monthsShown={2}
+                        className="form-input w-full  rounded-sm border border-gray-200 p-4 outline-none bg-white"
+                      />
+                      <Calendar
+                        size={18}
+                        className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 z-10 pointer-events-none"
+                      />
+                    </div>
+                  </Section>
+                </div>
                 <div className="space-y-8">
                   <TimeGrid
-                    label="Morning arrival"
-                    times={["08:00", "09:00", "10:00", "11:00"]}
-                    selected={formData.arrivalTime}
-                    onSelect={(t) => updateData({ arrivalTime: t })}
-                  />
-                  <TimeGrid
-                    label="Afternoon arrival"
-                    times={["12:00", "13:00", "14:00", "15:00"]}
+                    label="Choose arrival time "
+                    times={[
+                      "07:00",
+                      "08:00",
+                      "09:00",
+                      "10:00",
+                      "11:00",
+                      "12:00",
+                      "13:00",
+                      "14:00",
+                      "15:00",
+                      "16:00",
+                      "17:00",
+                    ]}
                     selected={formData.arrivalTime}
                     onSelect={(t) => updateData({ arrivalTime: t })}
                   />
                 </div>
-
                 <Section title="How can your cleaner access the property?">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     {[
@@ -291,23 +410,6 @@ const Register = () => {
                         {m}
                       </button>
                     ))}
-                  </div>
-                </Section>
-
-                <Section title="When would you like your first clean?">
-                  <div className="relative">
-                    <Calendar
-                      size={18}
-                      className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"
-                    />
-                    <input
-                      type="text"
-                      value={formData.firstCleanDate}
-                      className="form-input w-full pl-12"
-                      onChange={(e) =>
-                        updateData({ firstCleanDate: e.target.value })
-                      }
-                    />
                   </div>
                 </Section>
               </div>
@@ -400,7 +502,7 @@ const Register = () => {
                   <input
                     type="text"
                     value={formData.addressPostcode}
-                    className="form-input w-full bg-slate-50"
+                    className="form-input  w-full bg-slate-50"
                     onChange={(e) =>
                       updateData({ addressPostcode: e.target.value })
                     }
@@ -471,9 +573,6 @@ const Register = () => {
                       policy...
                     </span>
                   </label>
-                  <div className="w-48 h-16 bg-slate-100 rounded border border-slate-200 flex items-center justify-center text-xs text-slate-400">
-                    Captcha Placeholder
-                  </div>
                 </div>
               </div>
             )}
@@ -484,12 +583,27 @@ const Register = () => {
             <div className="bg-white border border-slate-200 rounded-2xl p-8 shadow-sm">
               <h2 className="text-2xl font-bold mb-8">Summary</h2>
               <div className="space-y-5">
-                <SummaryRow label="Service" value={formData.serviceType} />
+                <SummaryRow
+                  label="Service"
+                  value={
+                    formData.serviceType.length > 0
+                      ? formData.serviceType.join(", ")
+                      : "Select service"
+                  }
+                />
+
+                <SummaryRow label="Products" value={formData.products} />
+
+                <SummaryRow label="Property" value={formData.propertyType} />
                 <SummaryRow
                   label="Duration"
                   value={`${formData.duration} hours`}
                 />
                 <SummaryRow label="Frequency" value={formData.frequency} />
+                <SummaryRow
+                  label="First Clean"
+                  value={formData.firstCleanDate}
+                />
 
                 {step >= 3 && (
                   <div className="pt-4 border-t border-slate-100 space-y-2">
@@ -541,10 +655,28 @@ const Register = () => {
 
       <Footer />
 
-      {/* Embedded CSS for form inputs */}
+      {/* CSS Styles */}
       <style>{`
-        .form-input { @apply p-3.5 border border-slate-200 rounded-xl outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-500/5 transition-all; }
+        .form-input { 
+          @apply p-3.5 border border-slate-200 rounded-xl outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-500/5 transition-all; 
+        }
+        
+        /* Premium Date Input Styling */
+        input[type="date"]::-webkit-calendar-picker-indicator {
+          cursor: pointer;
+          border-radius: 4px;
+          margin-right: 2px;
+          opacity: 0.6;
+          filter: invert(0.5);
+        }
+
         .no-scrollbar::-webkit-scrollbar { display: none; }
+        .react-datepicker-wrapper { width: 100%; }
+.react-datepicker { 
+  display: flex !important; 
+  border: none !important; 
+  box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); 
+}
       `}</style>
     </div>
   );
@@ -560,7 +692,7 @@ const StepItem = ({ label, status }) => (
       </div>
     ) : (
       <div
-        className={`w-6 h-6 rounded-full border-2 flex items-center justify-center text-xs font-bold ${
+        className={` md:w-6 md:h-6 w-4 h-4 rounded-full border-2 flex items-center justify-center text-xs font-bold ${
           status === "active"
             ? "border-blue-600 text-blue-600"
             : "border-slate-300 text-slate-300"
@@ -602,26 +734,6 @@ const Chip = ({ label, active, onClick }) => (
   </button>
 );
 
-const Counter = ({ value, onChange, label }) => (
-  <div className="flex items-center justify-between p-3 border border-slate-200 rounded-xl">
-    <button
-      onClick={() => onChange(Math.max(0, value - 1))}
-      className="p-2 hover:bg-slate-50 rounded-lg text-slate-400"
-    >
-      <Minus size={18} />
-    </button>
-    <span className="font-bold text-slate-700">
-      {value} {label}
-    </span>
-    <button
-      onClick={() => onChange(value + 1)}
-      className="p-2 hover:bg-slate-50 rounded-lg text-slate-400"
-    >
-      <Plus size={18} />
-    </button>
-  </div>
-);
-
 const ExtraCard = ({ label, icon, active, onClick }) => (
   <button
     onClick={onClick}
@@ -660,23 +772,49 @@ const FrequencyCard = ({ title, active, onClick, bullets }) => (
 
 const TimeGrid = ({ label, times, selected, onSelect }) => (
   <div className="space-y-4">
-    <p className="text-xs font-black uppercase text-slate-400 tracking-wider">
-      {label}
-    </p>
-    <div className="grid grid-cols-4 gap-3">
-      {times.map((t) => (
-        <button
-          key={t}
-          onClick={() => onSelect(t)}
-          className={`py-3 border-2 rounded-xl text-sm font-bold transition-all ${
-            selected === t
-              ? "border-blue-600 bg-blue-50 text-blue-600"
-              : "border-slate-100 text-slate-400 hover:border-slate-200"
-          }`}
-        >
-          {t}
-        </button>
-      ))}
+    {/* Label */}
+    <p className="text-lg font-black text-slate-900 tracking-tight">{label}</p>
+
+    {/* Styled Info Box */}
+    <div className="flex items-start gap-3 bg-blue-50/50 border border-blue-100 p-4 rounded-2xl">
+      <div className="mt-0.5">
+        <Info size={18} className="text-[#448cff]" />
+      </div>
+      <p className="text-sm text-slate-600 leading-relaxed font-medium">
+        Our service is provided from{" "}
+        <span className="text-slate-900 font-bold">7am to 7pm</span>. Note that
+        prices vary slightly for slots outside the 9am to 5pm window.
+      </p>
+    </div>
+
+    {/* Time Slots Grid */}
+    <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+      {times.map((t) => {
+        // Check if the time is "Peak" or "Off-peak" (Optional visual hint)
+        const hour = parseInt(t.split(":")[0]);
+        const isOffPeak = hour < 9 || hour >= 17;
+
+        return (
+          <button
+            key={t}
+            type="button" // Important to prevent form submission
+            onClick={() => onSelect(t)}
+            className={`group relative py-4 border-2 rounded-2xl text-[15px] font-bold transition-all duration-300 ${
+              selected === t
+                ? "border-[#448cff] bg-[#448cff] text-white shadow-lg shadow-blue-200"
+                : "border-slate-100 text-slate-500 hover:border-[#448cff] hover:text-[#448cff] bg-white"
+            }`}
+          >
+            {t}
+            {/* Small subtle indicator for off-peak pricing */}
+            {isOffPeak && selected !== t && (
+              <span className="absolute top-1 right-2 text-[10px] text-slate-300 font-bold">
+                £
+              </span>
+            )}
+          </button>
+        );
+      })}
     </div>
   </div>
 );
