@@ -62,7 +62,7 @@ const Services = () => {
 
                 <Link
                   to="/register"
-                  className="w-full bg-[#448cff] hover:bg-blue-600 text-white py-4 rounded-2xl font-bold text-xs uppercase tracking-widest transition-all shadow-lg shadow-blue-100 active:scale-[0.98]"
+                  className=" bg-[#448cff] px-5 inline-block  hover:bg-blue-600 text-white py-4 rounded-2xl font-bold text-xs uppercase tracking-widest transition-all shadow-lg shadow-blue-100 active:scale-[0.98]"
                 >
                   Book Now
                 </Link>
