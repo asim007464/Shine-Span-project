@@ -787,7 +787,7 @@ const TimeGrid = ({ label, times, selected, onSelect }) => (
 const SummaryRow = ({ label, value }) => (
   <div className="flex justify-between items-start text-sm gap-4">
     <span className="text-slate-500 font-medium">{label}</span>
-    <span className="font-bold text-slate-800 text-right">{value || "-"}</span>
+    <span className="font-bold text-slate-800 text-left">{value || "-"}</span>
   </div>
 );
 export default Register;
