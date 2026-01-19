@@ -19,13 +19,16 @@ const CTA = () => {
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-5">
           {/* Primary Button */}
-          <button className="w-full sm:w-auto bg-white text-[#448cff] px-6 py-4 rounded-xl font-semibold text-[13px] uppercase tracking-widest shadow-2xl shadow-blue-900/20 hover:bg-gray-100 hover:shadow-4xl   transition-all active:scale-95">
+          <Link
+            to="/register"
+            className="w-full sm:w-auto bg-white text-[#448cff] px-6 py-4 rounded-xl font-semibold text-[13px] uppercase tracking-widest shadow-2xl shadow-blue-900/20 hover:bg-gray-100 hover:shadow-4xl   transition-all active:scale-95"
+          >
             Book Now
-          </button>
+          </Link>
 
           {/* Secondary Outline Button */}
           <Link
-            to="/services"
+            to="/contact"
             className="w-full sm:w-auto border-2 border-white/30 text-white px-6 py-4 rounded-2xl font-bold text-[13px] uppercase tracking-widest hover:bg-white/10 transition-all flex items-center justify-center gap-3"
           >
             <svg
