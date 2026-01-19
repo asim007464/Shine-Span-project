@@ -11,6 +11,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import CleanerApplication from "./pages/Cleanerapplication";
 import ChatBox from "./components/Homecomponents/ChatBox";
+import JoinTeam from "./pages/JoinTeam";
 const App = () => {
   return (
     <Router>

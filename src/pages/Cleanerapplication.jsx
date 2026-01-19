@@ -14,6 +14,7 @@ import {
   Save,
   Calendar,
   Check,
+  FileText,
 } from "lucide-react";
 
 const CleanerApplication = () => {
@@ -29,19 +30,96 @@ const CleanerApplication = () => {
     mobile: "",
     email: "",
     postcode: "",
-    experienceLevel: "",
+    experienceLevel: "", // Added
     experienceTypes: [],
     availability: {
-      Monday: { enabled: true, time: "" },
-      Tuesday: { enabled: true, time: "" },
-      Wednesday: { enabled: false, time: "" },
-      Thursday: { enabled: false, time: "" },
-      Friday: { enabled: false, time: "" },
-      Saturday: { enabled: false, time: "" },
-      Sunday: { enabled: false, time: "" },
+      Monday: {
+        enabled: true,
+        s1_start: "07:00",
+        s1_end: "12:00",
+        s2_start: "16:00",
+        s2_end: "20:00",
+      },
+      Tuesday: {
+        enabled: true,
+        s1_start: "07:00",
+        s1_end: "12:00",
+        s2_start: "16:00",
+        s2_end: "20:00",
+      },
+      Wednesday: {
+        enabled: true,
+        s1_start: "",
+        s1_end: "",
+        s2_start: "",
+        s2_end: "",
+      },
+      Thursday: {
+        enabled: true,
+        s1_start: "",
+        s1_end: "",
+        s2_start: "",
+        s2_end: "",
+      },
+      Friday: {
+        enabled: true,
+        s1_start: "",
+        s1_end: "",
+        s2_start: "",
+        s2_end: "",
+      },
+      Saturday: {
+        enabled: true,
+        s1_start: "",
+        s1_end: "",
+        s2_start: "",
+        s2_end: "",
+      },
+      Sunday: {
+        enabled: true,
+        s1_start: "",
+        s1_end: "",
+        s2_start: "",
+        s2_end: "",
+      },
+    },
+    // Added Eligibility
+    eligibility: {
+      rightToWork: false,
+      bankAccount: false,
+      selfEmployed: false,
+      noCriminalRecord: false,
     },
   });
-
+  const timeOptions = [
+    "07:00",
+    "07:30",
+    "08:00",
+    "08:30",
+    "09:00",
+    "09:30",
+    "10:00",
+    "10:30",
+    "11:00",
+    "11:30",
+    "12:00",
+    "12:30",
+    "13:00",
+    "13:30",
+    "14:00",
+    "14:30",
+    "15:00",
+    "15:30",
+    "16:00",
+    "16:30",
+    "17:00",
+    "17:30",
+    "18:00",
+    "18:30",
+    "19:00",
+    "19:30",
+    "20:00",
+  ];
   const nextStep = () => setStep((s) => Math.min(s + 1, totalSteps));
   const prevStep = () => setStep((s) => Math.max(s - 1, 1));
 
@@ -68,18 +146,20 @@ const CleanerApplication = () => {
     }));
   };
 
+  const updateEligibility = (field) => {
+    setFormData((prev) => ({
+      ...prev,
+      eligibility: { ...prev.eligibility, [field]: !prev.eligibility[field] },
+    }));
+  };
+
   return (
     <div className="min-h-screen bg-slate-50 font-sans text-slate-900">
       {/* --- Navbar --- */}
       <nav className="bg-white border-b border-slate-200 px-6 py-4 flex justify-between items-center sticky top-0 z-50">
         <div className="flex items-center space-x-2">
           <Link to="/">
-            <img
-              src="./websitelogo.png"
-              className="w-[100px]"
-              alt=""
-              srcset=""
-            />
+            <img src="./websitelogo.png" className="w-[100px]" alt="" />
           </Link>
         </div>
         <Link
@@ -161,7 +241,10 @@ const CleanerApplication = () => {
                     <h2 className="text-2xl font-black text-slate-900">
                       Personal Details
                     </h2>
-                    <button className="text-sm font-bold text-slate-400 hover:text-red-500 transition-colors">
+                    <button
+                      onClick={() => window.location.reload()}
+                      className="text-sm font-bold text-slate-400 hover:text-red-500 transition-colors"
+                    >
                       Clear Form
                     </button>
                   </div>
@@ -201,9 +284,10 @@ const CleanerApplication = () => {
                       />
                       <select
                         className="w-full pl-12 pr-10 py-3 bg-white border border-slate-200 rounded-xl appearance-none focus:border-blue-600 outline-none transition-all font-medium text-slate-600"
+                        value={formData.gender}
                         onChange={(e) => updateField("gender", e.target.value)}
                       >
-                        <option>Select gender</option>
+                        <option value="">Select gender</option>
                         <option value="male">Male</option>
                         <option value="female">Female</option>
                         <option value="other">Other</option>
@@ -242,14 +326,9 @@ const CleanerApplication = () => {
               {/* STEP 2: Experience */}
               {step === 2 && (
                 <div className="space-y-8 animate-in fade-in slide-in-from-right-4 duration-500">
-                  <div className="flex justify-between items-center">
-                    <h2 className="text-2xl font-black text-slate-900">
-                      Experience
-                    </h2>
-                    <button className="text-sm font-bold text-slate-400 hover:text-red-500 transition-colors">
-                      Clear Form
-                    </button>
-                  </div>
+                  <h2 className="text-2xl font-black text-slate-900">
+                    Experience
+                  </h2>
 
                   <div className="space-y-2">
                     <label className="text-sm font-bold text-slate-700">
@@ -260,12 +339,23 @@ const CleanerApplication = () => {
                         size={18}
                         className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"
                       />
-                      <select className="w-full pl-12 pr-10 py-3 border border-slate-200 rounded-xl appearance-none focus:border-blue-600 outline-none transition-all">
-                        <option>Select experience level</option>
-                        <option>Less than 1 year</option>
-                        <option>1-3 years</option>
-                        <option>3-5 years</option>
-                        <option>5+ years</option>
+                      <select
+                        className="w-full pl-12 pr-10 py-3 border border-slate-200 rounded-xl appearance-none focus:border-blue-600 outline-none transition-all"
+                        value={formData.experienceLevel}
+                        onChange={(e) =>
+                          updateField("experienceLevel", e.target.value)
+                        }
+                      >
+                        <option value="">Select experience level</option>
+                        <option value="Less than 6 months">
+                          Less than 6 months
+                        </option>
+                        <option value="More than 6 months">
+                          More than 6 months
+                        </option>
+                        <option value="More than 2 years">
+                          More than 2 years
+                        </option>
                       </select>
                       <ChevronDown
                         size={18}
@@ -276,7 +366,7 @@ const CleanerApplication = () => {
 
                   <div className="space-y-4">
                     <label className="text-sm font-bold text-slate-700 block">
-                      What type of cleaning experience do you have? *
+                      Cleaning type *
                     </label>
                     <div className="space-y-3">
                       {[
@@ -301,85 +391,226 @@ const CleanerApplication = () => {
               {/* STEP 3: Availability */}
               {step === 3 && (
                 <div className="space-y-8 animate-in fade-in slide-in-from-right-4 duration-500">
-                  <div className="flex justify-between items-center">
-                    <h2 className="text-2xl font-black text-slate-900">
-                      Availability
-                    </h2>
-                    <button className="text-sm font-bold text-slate-400 hover:text-red-500 transition-colors">
-                      Clear Form
-                    </button>
-                  </div>
-
-                  <p className="text-sm text-slate-500 leading-relaxed">
-                    Please state availability for days from Monday till Sunday
-                    and your available times for each day (e.g., 10am till 2pm).
-                    Our requirement is up to 6 hours per day, as per your
-                    convenience.
+                  <h2 className="text-2xl font-black text-slate-900">
+                    Availability
+                  </h2>
+                  <p className="text-sm text-slate-500 leading-relaxed bg-blue-50/50 p-4 rounded-xl border border-blue-100">
+                    Our requirement is up to 6 hours per day. Please state your
+                    available times for each day you want to work (e.g., 10am
+                    till 2pm).
                   </p>
-
                   <div className="space-y-3">
-                    <label className="text-sm font-bold text-slate-700 block mb-4">
-                      Which days do you want to work? *
-                    </label>
                     {Object.keys(formData.availability).map((day) => (
-                      <div key={day} className="flex items-center space-x-4">
-                        <div className="flex-1">
-                          <button
-                            onClick={() =>
+                      <div
+                        key={day}
+                        className={`mb-4 overflow-hidden rounded-sm border transition-all duration-300 ${
+                          formData.availability[day].enabled
+                            ? "border-gray-400 bg-white shadow-md"
+                            : "border-gray-200 bg-slate-50/50"
+                        }`}
+                      >
+                        {/* --- DAY HEADER --- */}
+                        <div
+                          className={`flex items-center justify-between p-4 ${formData.availability[day].enabled ? "bg-slate-50 border-b border-gray-200" : ""}`}
+                        >
+                          <CheckboxItem
+                            label={day}
+                            checked={formData.availability[day].enabled}
+                            onToggle={() =>
                               updateAvailability(
                                 day,
                                 "enabled",
-                                !formData.availability[day].enabled
+                                !formData.availability[day].enabled,
                               )
                             }
-                            className={`w-full flex items-center p-4 border rounded-xl transition-all ${
-                              formData.availability[day].enabled
-                                ? "border-blue-600 bg-blue-50/30"
-                                : "border-slate-200"
-                            }`}
-                          >
-                            <div
-                              className={`w-5 h-5 rounded border-2 mr-4 flex items-center justify-center transition-all ${
-                                formData.availability[day].enabled
-                                  ? "bg-blue-600 border-blue-600"
-                                  : "border-slate-300"
-                              }`}
-                            >
-                              {formData.availability[day].enabled && (
-                                <Check size={14} className="text-white" />
-                              )}
-                            </div>
-                            <span
-                              className={`font-bold ${
-                                formData.availability[day].enabled
-                                  ? "text-blue-900"
-                                  : "text-slate-500"
-                              }`}
-                            >
-                              {day}
+                          />
+                          {!formData.availability[day].enabled && (
+                            <span className="text-[10px] font-black uppercase tracking-widest text-slate-400">
+                              Unavailable
                             </span>
-                          </button>
+                          )}
                         </div>
+
+                        {/* --- SHIFT SELECTION AREA --- */}
                         {formData.availability[day].enabled && (
-                          <div className="w-1/3 relative animate-in fade-in slide-in-from-left-2">
-                            <Clock
-                              size={16}
-                              className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"
-                            />
-                            <input
-                              type="text"
-                              placeholder="e.g. 10am - 2pm"
-                              className="w-full pl-10 pr-4 py-4 border border-slate-200 rounded-xl outline-none focus:border-blue-600 text-sm"
-                              value={formData.availability[day].time}
-                              onChange={(e) =>
-                                updateAvailability(day, "time", e.target.value)
-                              }
-                            />
+                          <div className="p-6 grid grid-cols-1 md:grid-cols-2 gap-8 animate-in fade-in zoom-in-95 duration-300">
+                            {/* SHIFT 1 */}
+                            <div className="space-y-3">
+                              <div className="flex items-center space-x-2 text-[#448cff]">
+                                <Clock size={14} strokeWidth={3} />
+                                <p className="text-[11px] font-black uppercase tracking-widest">
+                                  Availability
+                                </p>
+                              </div>
+                              <div className="flex items-center bg-white border border-gray-300 rounded-sm overflow-hidden focus-within:border-[#448cff] transition-colors">
+                                <select
+                                  className="flex-1 p-3 text-sm font-bold bg-transparent outline-none cursor-pointer appearance-none text-center"
+                                  value={formData.availability[day].s1_start}
+                                  onChange={(e) =>
+                                    updateAvailability(
+                                      day,
+                                      "s1_start",
+                                      e.target.value,
+                                    )
+                                  }
+                                >
+                                  <option value="">Start</option>
+                                  {timeOptions.map((t) => (
+                                    <option key={t} value={t}>
+                                      {t}
+                                    </option>
+                                  ))}
+                                </select>
+                                <div className="h-8 w-px bg-gray-200"></div>
+                                <select
+                                  className="flex-1 p-3 text-sm font-bold bg-transparent outline-none cursor-pointer appearance-none text-center"
+                                  value={formData.availability[day].s1_end}
+                                  onChange={(e) =>
+                                    updateAvailability(
+                                      day,
+                                      "s1_end",
+                                      e.target.value,
+                                    )
+                                  }
+                                >
+                                  <option value="">End</option>
+                                  {timeOptions.map((t) => (
+                                    <option key={t} value={t}>
+                                      {t}
+                                    </option>
+                                  ))}
+                                </select>
+                              </div>
+                            </div>
+
+                            {/* SHIFT 2 */}
+                            <div className="space-y-3">
+                              <div className="flex items-center space-x-2 text-[#448cff]">
+                                <Clock size={14} strokeWidth={3} />
+                                <p className="text-[11px] font-black uppercase tracking-widest">
+                                  Availability
+                                </p>
+                              </div>
+                              <div className="flex items-center bg-white border border-gray-300 rounded-sm overflow-hidden focus-within:border-orange-500 transition-colors">
+                                <select
+                                  className="flex-1 p-3 text-sm font-bold bg-transparent outline-none cursor-pointer appearance-none text-center"
+                                  value={formData.availability[day].s2_start}
+                                  onChange={(e) =>
+                                    updateAvailability(
+                                      day,
+                                      "s2_start",
+                                      e.target.value,
+                                    )
+                                  }
+                                >
+                                  <option value="">Start</option>
+                                  {timeOptions.map((t) => (
+                                    <option key={t} value={t}>
+                                      {t}
+                                    </option>
+                                  ))}
+                                </select>
+                                <div className="h-8 w-px bg-gray-200"></div>
+                                <select
+                                  className="flex-1 p-3 text-sm font-bold bg-transparent outline-none cursor-pointer appearance-none text-center"
+                                  value={formData.availability[day].s2_end}
+                                  onChange={(e) =>
+                                    updateAvailability(
+                                      day,
+                                      "s2_end",
+                                      e.target.value,
+                                    )
+                                  }
+                                >
+                                  <option value="">End</option>
+                                  {timeOptions.map((t) => (
+                                    <option key={t} value={t}>
+                                      {t}
+                                    </option>
+                                  ))}
+                                </select>
+                              </div>
+                            </div>
                           </div>
                         )}
                       </div>
                     ))}
                   </div>
+                </div>
+              )}
+
+              {/* STEP 4: Eligibility (NEW) */}
+              {/* STEP 4: Eligibility */}
+              {step === 4 && (
+                <div className="space-y-8 animate-in fade-in slide-in-from-right-4 duration-500">
+                  <div className="flex justify-between items-center">
+                    <h2 className="text-2xl font-black text-slate-900">
+                      Eligibility
+                    </h2>
+                  </div>
+
+                  <div className="space-y-4 bg-white p-6 rounded-2xl border border-slate-200">
+                    <label className="text-sm font-bold text-slate-700 block mb-2">
+                      Please confirm your eligibility to work with us:
+                    </label>
+
+                    <div className="space-y-4">
+                      <CheckboxItem
+                        label="I have the right to work in the UK"
+                        checked={formData.eligibility.rightToWork}
+                        onToggle={() => updateEligibility("rightToWork")}
+                      />
+                      <CheckboxItem
+                        label="I have a UK bank account"
+                        checked={formData.eligibility.bankAccount}
+                        onToggle={() => updateEligibility("bankAccount")}
+                      />
+                      <CheckboxItem
+                        label="I understand I will be self-employed"
+                        checked={formData.eligibility.selfEmployed}
+                        onToggle={() => updateEligibility("selfEmployed")}
+                      />
+                      <CheckboxItem
+                        label="I do not have a criminal record or any police convictions"
+                        checked={formData.eligibility.noCriminalRecord}
+                        onToggle={() => updateEligibility("noCriminalRecord")}
+                      />
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {/* STEP 5: Final Review (NEW) */}
+              {step === 5 && (
+                <div className="space-y-8 animate-in fade-in slide-in-from-right-4 duration-500 text-center">
+                  <div className="w-16 h-16 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mx-auto">
+                    <FileText size={32} />
+                  </div>
+                  <h2 className="text-2xl font-black text-slate-900">
+                    Ready to Submit?
+                  </h2>
+                  <div className="text-left bg-slate-50 p-6 rounded-2xl border border-slate-100 space-y-4">
+                    <p className="text-sm">
+                      <strong>Name:</strong> {formData.firstName}{" "}
+                      {formData.surname}
+                    </p>
+                    <p className="text-sm">
+                      <strong>Email:</strong> {formData.email}
+                    </p>
+                    <p className="text-sm">
+                      <strong>Experience:</strong> {formData.experienceLevel}
+                    </p>
+                    <p className="text-sm">
+                      <strong>Days to work:</strong>{" "}
+                      {Object.keys(formData.availability)
+                        .filter((d) => formData.availability[d].enabled)
+                        .join(", ")}
+                    </p>
+                  </div>
+                  <p className="text-sm text-slate-500">
+                    By clicking submit, you confirm that all provided info is
+                    accurate.
+                  </p>
                 </div>
               )}
 
@@ -395,13 +626,16 @@ const CleanerApplication = () => {
                     </button>
                   )}
                   <button
-                    onClick={nextStep}
+                    onClick={
+                      step === 5
+                        ? () => alert("Application Submitted!")
+                        : nextStep
+                    }
                     className="flex-[2] py-4 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl shadow-lg shadow-blue-200 transition-all active:scale-[0.98]"
                   >
-                    Next Step
+                    {step === 5 ? "Submit Application" : "Next Step"}
                   </button>
                 </div>
-
                 <button className="flex items-center text-sm font-bold text-slate-400 hover:text-slate-600 transition-colors">
                   <Save size={16} className="mr-2" />
                   Save as Draft
@@ -415,7 +649,7 @@ const CleanerApplication = () => {
   );
 };
 
-// --- Sub-Components ---
+// --- Sub-Components (Unchanged design) ---
 
 const FeatureItem = ({ icon, label }) => (
   <li className="flex items-center space-x-4 text-slate-500 font-medium">
@@ -455,9 +689,7 @@ const CheckboxItem = ({ label, checked, onToggle }) => (
       {checked && <Check size={14} className="text-white" strokeWidth={3} />}
     </div>
     <span
-      className={`text-sm font-medium transition-colors ${
-        checked ? "text-slate-900 font-bold" : "text-slate-500"
-      }`}
+      className={`text-sm font-medium transition-colors ${checked ? "text-slate-900 font-bold" : "text-slate-500"}`}
     >
       {label}
     </span>
