@@ -180,7 +180,7 @@ const Login = () => {
               </Link>
             </p>
             <p className="text-slate-500">
-              New Cleaner wanting to join?{" "}
+              New Cleaner?{" "}
               <Link
                 to="/cleanerapplication"
                 className="font-semibold text-blue-600 hover:underline"
