@@ -528,12 +528,7 @@ const CleanerApplication = () => {
                       Application Submitted!
                     </h2>
                     <p className="text-slate-500 text-lg font-medium max-w-md mx-auto">
-                      Thanks for submitting your details,{" "}
-                      <span className="text-blue-600 font-bold">
-                        {formData.firstName}
-                      </span>
-                      . Our recruitment team will review your profile and
-                      contact you within 48 hours.
+                      Thanks for submitting your details.
                     </p>
                   </div>
 
