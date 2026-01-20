@@ -29,8 +29,6 @@ const Login = () => {
   return (
     // Changed min-h-screen to h-screen and added overflow-hidden to lock the page height
     <div className="flex h-screen w-full bg-white font-sans text-slate-900 overflow-hidden">
-      {/* LEFT SECTION: Image & Testimonial (Hidden on mobile) */}
-      {/* LEFT SECTION: Image & Testimonial (Hidden on mobile) */}
       <div className="relative hidden w-1/2 lg:block h-full overflow-hidden">
         {/* BACKGROUND DIV REPLACING THE IMG TAG */}
         <div
@@ -173,7 +171,7 @@ const Login = () => {
             <p className="text-slate-500 ml-1">
               New Client?{" "}
               <Link
-                to="/register"
+                to="/ClientRegistration"
                 className="font-semibold text-blue-600 hover:underline"
               >
                 Register here

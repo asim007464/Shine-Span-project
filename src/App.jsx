@@ -12,6 +12,7 @@ import Register from "./pages/Register";
 import CleanerApplication from "./pages/Cleanerapplication";
 import ChatBox from "./components/Homecomponents/ChatBox";
 import JoinTeam from "./pages/JoinTeam";
+import ClientRegistration from "./pages/Clientregisteration";
 const App = () => {
   return (
     <Router>
@@ -28,7 +29,10 @@ const App = () => {
           path="/cleanerapplication"
           element={<CleanerApplication />}
         ></Route>
-
+        <Route
+          path="/ClientRegistration"
+          element={<ClientRegistration />}
+        ></Route>
         {/* Add your other routes here */}
       </Routes>
       <ChatBox></ChatBox>
