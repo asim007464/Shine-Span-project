@@ -48,7 +48,7 @@ const Contact = () => {
     },
     {
       title: "Service Area",
-      value: "All over london",
+      value: "All across london",
       icon: (
         <svg
           className="w-6 h-6"
@@ -73,7 +73,7 @@ const Contact = () => {
     },
     {
       title: "Business Hours",
-      value: "Mon-Fri: 8AM-8PM",
+      value: "Mon-Fri: 7AM-8PM",
       sub: "Sat-Sun: 7AM-8PM",
       icon: (
         <svg

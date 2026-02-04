@@ -13,16 +13,23 @@ import CleanerApplication from "./pages/Cleanerapplication";
 import ChatBox from "./components/Homecomponents/ChatBox";
 import JoinTeam from "./pages/JoinTeam";
 import ClientRegistration from "./pages/Clientregisteration";
+import TermsAndConditions from "./pages/TermsAndConditions";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import WebsiteGuard from "./pages/WebsiteGuard";
 const App = () => {
   return (
     <Router>
       {/* Add ScrollToTop here */}
+      <WebsiteGuard></WebsiteGuard>
       <ScrollToTop />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/services" element={<Services />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/TermsAndConditions" element={<TermsAndConditions />} />
+        <Route path="/PrivacyPolicy" element={<PrivacyPolicy />} />
+
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />}></Route>
         <Route

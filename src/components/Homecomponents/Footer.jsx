@@ -202,10 +202,16 @@ const Footer = () => {
             reserved.
           </p>
           <div className="flex items-center space-x-6">
-            <Link to="/" className="text-sm text-gray-400 hover:text-[#448cff]">
+            <Link
+              to="/PrivacyPolicy"
+              className="text-sm text-gray-400 hover:text-[#448cff]"
+            >
               Privacy Policy
             </Link>
-            <Link to="/" className="text-sm text-gray-400 hover:text-[#448cff]">
+            <Link
+              to="/TermsAndConditions"
+              className="text-sm text-gray-400 hover:text-[#448cff]"
+            >
               Terms of Service
             </Link>
           </div>
