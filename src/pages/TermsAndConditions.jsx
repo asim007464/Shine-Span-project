@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
-import Navbar from "../Components/Homecomponents/Navbar";
-import Footer from "../Components/Homecomponents/Footer";
+import Navbar from "../components/Homecomponents/Navbar";
+import Footer from "../components/Homecomponents/Footer";
 
 const TermsAndConditions = () => {
   useEffect(() => {

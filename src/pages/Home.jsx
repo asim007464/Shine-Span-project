@@ -56,7 +56,7 @@ const Home = () => {
         </section>
 
         {/* --- NEW: POSTCODE CHECKER SECTION --- */}
-        <section className="relative z-20 -mt-16 px-4 mb-10">
+        <section className="md:relative z-20 md:-mt-16 px-4 mb-10">
           <div className="max-w-4xl mx-auto">
             <div className="bg-white border border-gray-400 rounded-sm p-8 md:p-12 shadow-2xl shadow-blue-900/10 text-center">
               <div className="flex flex-col items-center mb-8">
@@ -83,10 +83,6 @@ const Home = () => {
                   <Search size={16} /> Check
                 </button>
               </div>
-
-              <p className="mt-6 text-slate-400 text-xs font-bold uppercase tracking-widest">
-                Serving all Greater London Boroughs
-              </p>
             </div>
           </div>
         </section>
