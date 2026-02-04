@@ -209,8 +209,7 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-gray-50 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-gray-400 text-sm">
-            © {currentYear} SHINE & SPAN CLEANING SERVICES LTD. All rights
-            reserved.
+            © 2025 SHINE & SPAN CLEANING SERVICES LTD. All rights reserved.
           </p>
           <div className="flex items-center space-x-6">
             <Link
