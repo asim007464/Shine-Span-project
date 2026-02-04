@@ -337,7 +337,7 @@ const Register = () => {
                     Daytime 7:00 am - 5:00 pm
                   </div>
 
-                  <Section title="First cleaning date">
+                  <Section title="Cleaning date">
                     <div className="relative ">
                       <DatePicker
                         selected={formData.firstCleanDate}
