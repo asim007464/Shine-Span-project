@@ -56,13 +56,10 @@ const Home = () => {
         </section>
 
         {/* --- NEW: POSTCODE CHECKER SECTION --- */}
-        <section className="md:relative z-20 md:-mt-16 px-4 mb-10">
+        <section className="z-20 mt-10  px-4">
           <div className="max-w-4xl mx-auto">
-            <div className="bg-white border border-gray-400 rounded-sm p-8 md:p-12 shadow-2xl shadow-blue-900/10 text-center">
+            <div className="bg-white border border-gray-300 rounded-2xl p-8 md:p-12 shadow-2xl shadow-blue-900/10 text-center">
               <div className="flex flex-col items-center mb-8">
-                <div className="w-12 h-12 bg-blue-50 text-[#448cff] rounded-full flex items-center justify-center mb-4">
-                  <MapPin size={24} />
-                </div>
                 <h2 className="text-2xl md:text-3xl font-black text-[#1e293b] leading-tight max-w-xl uppercase tracking-tighter">
                   Please enter your Post Code to check if we have started
                   Cleaning in your area
