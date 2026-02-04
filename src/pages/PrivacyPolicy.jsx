@@ -8,22 +8,23 @@ const PrivacyPolicy = () => {
   }, []);
 
   return (
-    <div className="font-jakarta bg-white text-slate-700 pb-20">
+    <div className="font-jakarta bg-white text-slate-700 ">
       <Navbar />
 
       {/* --- HEADER --- */}
       <section className="bg-white py-16 border-b border-gray-100 text-center">
         <div className="max-w-4xl mx-auto px-6">
-          <h1 className="text-4xl md:text-6xl font-black text-[#1e293b] uppercase tracking-tighter mb-4">
-            Shine<span className="text-[#448cff]"> Span</span>
+          <h1 className="text-4xl  md:text-6xl font-black text-[#1e293b] uppercase tracking-tighter mb-4">
+            Shine <span className="text-[#448cff]"> & </span>Span Cleaning
+            Services LTD
           </h1>
           <p className="text-[#448cff] font-black uppercase tracking-widest text-sm mb-4">
             Professional Cleaning Services
           </p>
           <div className="flex flex-col md:flex-row justify-center gap-4 text-slate-400 text-xs font-bold uppercase tracking-widest">
-            <span>Effective Date: 31 January 2026</span>
+            <span>Effective Date: 31 January 2025</span>
             <span className="hidden md:block">|</span>
-            <span>Last Updated: 31 January 2026</span>
+            <span>Last Updated: 31 January 2025</span>
           </div>
         </div>
       </section>
@@ -37,10 +38,11 @@ const PrivacyPolicy = () => {
               1. Introduction
             </h2>
             <p className="leading-relaxed mb-4">
-              ShineSpan ("we", "us", "our", "the Company") is committed to
-              protecting your privacy and personal data. This Privacy Policy
-              explains how we collect, use, store, and protect your personal
-              information when you use our cleaning services.
+              Shine & Span Cleaning Services LTD ("we", "us", "our", "the
+              Company") is committed to protecting your privacy and personal
+              data. This Privacy Policy explains how we collect, use, store, and
+              protect your personal information when you use our cleaning
+              services.
             </p>
             <p className="leading-relaxed">
               This Privacy Policy complies with the UK General Data Protection
@@ -56,13 +58,13 @@ const PrivacyPolicy = () => {
               2. Data Controller
             </h2>
             <p className="mb-4">
-              ShineSpan is the data controller responsible for your personal
-              data. Our contact details are:
+              Shine & Span Cleaning Services LTD is the data controller
+              responsible for your personal data. Our contact details are:
             </p>
             <ul className="list-disc pl-8 space-y-2 font-bold text-slate-800">
-              <li>Company Name: ShineSpan</li>
-              <li>Email: privacy@ShineSpan.co.uk</li>
-              <li>Phone: +44 20 XXXX XXXX</li>
+              <li>Company Name: Shine & Span Cleaning Services LTD</li>
+              <li>Email: privacy@Shine & Span Cleaning Services LTD.co.uk</li>
+              <li>Phone: 0738 464 7705 (from 1pm till 7pm)</li>
               <li>Address: [Your Business Address]</li>
             </ul>
           </section>
@@ -346,8 +348,8 @@ const PrivacyPolicy = () => {
                 To exercise any of these rights, please contact us at:
               </p>
               <ul className="mt-2 text-sm space-y-1">
-                <li>Email: privacy@ShineSpan.co.uk</li>
-                <li>Phone: +44 20 XXXX XXXX</li>
+                <li>Email: cleaning@shinespan.co.uk</li>
+                <li>Phone: 0738 464 7705 (from 1pm till 7pm)</li>
               </ul>
               <p className="mt-4 text-[11px] uppercase tracking-widest text-slate-400">
                 We will respond to your request within 30 days.
@@ -516,9 +518,9 @@ const PrivacyPolicy = () => {
               <p className="text-[#448cff] uppercase text-xs tracking-[0.2em] mb-2 font-black">
                 Company Details
               </p>
-              <p>ShineSpan</p>
-              <p>Email: privacy@ShineSpan.co.uk</p>
-              <p>Phone: +44 20 XXXX XXXX</p>
+              <p>Shine & Span Cleaning Services LTD</p>
+              <p>Email: cleaning@shinespan.co.uk</p>
+              <p>Phone: 0738 464 7705 (from 1pm till 7pm)</p>
               <p>Address: [Your Business Address]</p>
             </div>
 
@@ -544,8 +546,8 @@ const PrivacyPolicy = () => {
           {/* FINAL FOOTNOTE */}
           <div className="text-center pt-10 border-t border-gray-100">
             <p className="text-slate-400 text-[10px] font-black uppercase tracking-[0.3em]">
-              By using ShineSpan services, you acknowledge that you have read
-              and understood this Privacy Policy.
+              By using Shine & Span Cleaning Services LTD services, you
+              acknowledge that you have read and understood this Privacy Policy.
             </p>
           </div>
         </div>

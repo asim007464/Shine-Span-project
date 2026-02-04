@@ -171,7 +171,10 @@ const Footer = () => {
                   <p className="text-xs text-gray-400 font-bold uppercase tracking-widest mb-1">
                     Phone
                   </p>
-                  <p className="text-gray-700 font-semibold">(555) 123-4567</p>
+                  <p className="text-gray-700 font-semibold"> 0738 464 7705</p>
+                  <p className="text-gray-700 font-semibold">
+                    (from 1pm till 7pm)
+                  </p>
                 </div>
               </div>
               <div className="flex items-start gap-4">
@@ -194,7 +197,9 @@ const Footer = () => {
                   <p className="text-xs text-gray-400 font-bold uppercase tracking-widest mb-1">
                     Email
                   </p>
-                  <p className="text-gray-700 font-semibold">abc@gmail.com</p>
+                  <p className="text-gray-700 font-semibold">
+                    cleaning@shinespan.co.uk
+                  </p>
                 </div>
               </div>
             </div>

@@ -8,22 +8,23 @@ const TermsAndConditions = () => {
   }, []);
 
   return (
-    <div className="font-jakarta bg-white text-slate-700 pb-20">
+    <div className="font-jakarta bg-white text-slate-700 ">
       <Navbar />
 
       {/* --- PAGE HEADER --- */}
       <section className="bg-white py-16 border-b border-gray-100 text-center">
         <div className="max-w-4xl mx-auto px-6">
           <h1 className="text-4xl md:text-6xl font-black text-[#1e293b] uppercase tracking-tighter mb-4">
-            Shine<span className="text-[#448cff]"> Span</span>
+            Shine <span className="text-[#448cff]"> & </span>Span Cleaning
+            Services LTD
           </h1>
           <p className="text-[#448cff] font-black uppercase tracking-widest text-sm mb-4">
             Terms and Conditions
           </p>
           <div className="flex flex-col md:flex-row justify-center gap-4 text-slate-400 text-xs font-bold uppercase tracking-widest">
-            <span>Effective Date: 31 January 2026</span>
+            <span>Effective Date: 31 January 2025</span>
             <span className="hidden md:block">|</span>
-            <span>Last Updated: 31 January 2026</span>
+            <span>Last Updated: 31 January 2025</span>
           </div>
         </div>
       </section>
@@ -38,9 +39,10 @@ const TermsAndConditions = () => {
             </h2>
             <p className="leading-relaxed mb-4 text-center">
               These Terms and Conditions ("Terms") govern the provision of
-              cleaning services by ShineSpan ("we", "us", "our", "the Company")
-              to customers ("you", "your", "the Customer"). By booking our
-              services, you agree to be bound by these Terms.
+              cleaning services by Shine & Span Cleaning Services LTD("we",
+              "us", "our", "the Company") to customers ("you", "your", "the
+              Customer"). By booking our services, you agree to be bound by
+              these Terms.
             </p>
             <p className="leading-relaxed text-center font-bold">
               Please read these Terms carefully before using our services. If
@@ -60,7 +62,8 @@ const TermsAndConditions = () => {
                   2.1 Scope of Services
                 </h3>
                 <p className="mb-4">
-                  ShineSpan provides professional cleaning services including:
+                  Shine & Span Cleaning Services LTDprovides professional
+                  cleaning services including:
                 </p>
                 <ul className="list-inside list-disc space-y-2 text-center">
                   <li>Regular domestic cleaning</li>
@@ -186,7 +189,8 @@ const TermsAndConditions = () => {
               7. Liability and Insurance
             </h2>
             <p className="mb-4">
-              ShineSpan maintains public and employer's liability insurance.
+              Shine & Span Cleaning Services LTDmaintains public and employer's
+              liability insurance.
             </p>
             <p className="leading-relaxed mb-4">
               <strong>7.2 Limitation:</strong> Total liability is limited to the
@@ -248,7 +252,7 @@ const TermsAndConditions = () => {
               </p>
               <p>ShineSpan</p>
               <p>Email: support@ShineSpan.co.uk</p>
-              <p>Phone: +44 20 XXXX XXXX</p>
+              <p>Phone: 0738 464 7705 (from 1pm till 7pm)</p>
               <p>Address: [Your Business Address]</p>
             </div>
           </section>
@@ -256,8 +260,9 @@ const TermsAndConditions = () => {
           {/* FINAL FOOTNOTE */}
           <div className="text-center pt-10 border-t border-gray-100">
             <p className="text-slate-400 text-[10px] font-black uppercase tracking-[0.3em] text-center">
-              By booking ShineSpan services, you acknowledge that you have read
-              and understood these Terms and Conditions.
+              By booking Shine & Span Cleaning Services LTDservices, you
+              acknowledge that you have read and understood these Terms and
+              Conditions.
             </p>
           </div>
         </div>

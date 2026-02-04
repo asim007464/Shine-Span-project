@@ -52,7 +52,7 @@ const Register = () => {
     details: "",
     arrivalTime: "09:00",
     accessMethod: "Spare keys",
-    firstCleanDate: new Date(),
+    firstCleanDate: null,
     firstName: "asim",
     surname: "asdf",
     phone: "030195207928",
@@ -379,7 +379,7 @@ const Register = () => {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     {[
                       "Spare keys",
-                      "Someone at home",
+                      "Someone at home / office",
                       "Concierge",
                       "Key safe",
                       "Key hidden",
@@ -583,7 +583,20 @@ const Register = () => {
                 <SummaryRow label="Frequency" value={formData.frequency} />
                 <SummaryRow
                   label="First Clean"
-                  value={formData.firstCleanDate.toString().slice(0, 15)}
+                  value={
+                    formData.firstCleanDate
+                      ? (() => {
+                          const d = new Date(formData.firstCleanDate);
+                          const day = String(d.getDate()).padStart(2, "0");
+                          const month = String(d.getMonth() + 1).padStart(
+                            2,
+                            "0",
+                          );
+                          const year = d.getFullYear();
+                          return `${day}-${month}-${year}`;
+                        })()
+                      : "-"
+                  }
                 />
 
                 {step >= 3 && (

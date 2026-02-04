@@ -73,7 +73,7 @@ const Contact = () => {
     },
     {
       title: "Business Hours",
-      value: "Mon-Fri: 7AM-8PM",
+      value: "Mon-Sun: 7AM-8PM",
       sub: "Sat-Sun: 7AM-8PM",
       icon: (
         <svg

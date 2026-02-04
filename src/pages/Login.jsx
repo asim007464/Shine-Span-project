@@ -57,7 +57,7 @@ const Login = () => {
             Sofia Davis
           </p>
           <p className="mt-12 text-xs text-slate-400">
-            © 2026 Shine & Span Inc.
+            © 2025 Shine & Span Inc.
           </p>
         </div>
       </div>
