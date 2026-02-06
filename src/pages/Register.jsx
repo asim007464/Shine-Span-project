@@ -13,6 +13,7 @@ import {
   CheckCircle2,
   Calendar,
   Info,
+  Utensils,
   Lock,
   ChevronLeft,
   MapPin,
@@ -45,9 +46,9 @@ const Register = () => {
     bedrooms: 1,
     bathrooms: 1,
     extras: [],
-    duration: 4,
-    products: "I will provide",
-    frequency: "Weekly",
+    duration: null, // Changed from 4
+    products: "", // Changed from "I will provide"
+    frequency: "", // Changed from "Weekly"
     email: "abc@gmail.com",
     details: "",
     arrivalTime: "09:00",
@@ -210,6 +211,18 @@ const Register = () => {
                       }
                     />
                     <ExtraCard
+                      label="Kitchen"
+                      icon={<Utensils size={32} />}
+                      active={formData.extras.includes("cabinets")}
+                      onClick={() =>
+                        updateData({
+                          extras: formData.extras.includes("cabinets")
+                            ? formData.extras.filter((e) => e !== "cabinets")
+                            : [...formData.extras, "cabinets"],
+                        })
+                      }
+                    />
+                    <ExtraCard
                       label="Inside oven"
                       icon={<Microwave size={32} />}
                       active={formData.extras.includes("oven")}
@@ -350,7 +363,7 @@ const Register = () => {
                       />
                       <Calendar
                         size={18}
-                        className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 z-10 pointer-events-none"
+                        className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-800 z-10 pointer-events-none"
                       />
                     </div>
                   </Section>
@@ -566,21 +579,43 @@ const Register = () => {
             <div className="bg-white border border-slate-200 rounded-2xl p-8 shadow-sm">
               <h2 className="text-2xl font-bold mb-8">Summary</h2>
               <div className="space-y-5">
+                {/* SERVICE: Joins array or shows -- */}
                 <SummaryRow
                   label="Service"
                   value={
-                    formData.serviceType.length > 0
+                    formData.serviceType && formData.serviceType.length > 0
                       ? formData.serviceType.join(", ")
-                      : "Select service"
+                      : "--"
                   }
                 />
-                <SummaryRow label="Products" value={formData.products} />
-                <SummaryRow label="Property" value={formData.propertyType} />
+
+                {/* PRODUCTS */}
+                <SummaryRow
+                  label="Products"
+                  value={formData.products || "--"}
+                />
+
+                {/* PROPERTY */}
+                <SummaryRow
+                  label="Property"
+                  value={formData.propertyType || "--"}
+                />
+
+                {/* DURATION */}
                 <SummaryRow
                   label="Duration"
-                  value={`${formData.duration} hours`}
+                  value={
+                    formData.duration ? `${formData.duration} hours` : "--"
+                  }
                 />
-                <SummaryRow label="Frequency" value={formData.frequency} />
+
+                {/* FREQUENCY */}
+                <SummaryRow
+                  label="Frequency"
+                  value={formData.frequency || "--"}
+                />
+
+                {/* FIRST CLEAN DATE: Centered format DD-MM-YYYY */}
                 <SummaryRow
                   label="First Clean"
                   value={
@@ -595,26 +630,23 @@ const Register = () => {
                           const year = d.getFullYear();
                           return `${day}-${month}-${year}`;
                         })()
-                      : "-"
+                      : "--"
                   }
                 />
 
+                {/* ADDRESS SECTION (Step 3+) */}
                 {step >= 3 && (
                   <div className="pt-4 border-t border-slate-100 space-y-2">
                     <p className="text-xs font-bold uppercase text-slate-400">
                       Address
                     </p>
                     <p className="text-sm text-slate-700 leading-tight">
-                      {formData.addressLine1}, {formData.city},{" "}
-                      {formData.addressPostcode}
+                      {formData.addressLine1
+                        ? `${formData.addressLine1}, `
+                        : ""}
+                      {formData.city ? `${formData.city}, ` : ""}
+                      {formData.addressPostcode || "--"}
                     </p>
-                  </div>
-                )}
-
-                {step === 4 && (
-                  <div className="pt-6 flex justify-between items-center text-xl font-bold border-t border-slate-100">
-                    <span>Total</span>
-                    <span className="text-blue-600">£100.00</span>
                   </div>
                 )}
               </div>
