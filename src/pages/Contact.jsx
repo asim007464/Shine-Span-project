@@ -7,8 +7,8 @@ const Contact = () => {
   const topCards = [
     {
       title: "Phone",
-      value: "(555) 123-4567",
-      sub: "Available 24/7",
+      value: "0738 464 7705",
+      sub: "from 1pm till 7pm",
       btn: "Call Now",
       icon: (
         <svg
@@ -28,7 +28,7 @@ const Contact = () => {
     },
     {
       title: "Email",
-      value: "abc@gmail.com",
+      value: "cleaning@shinespan.co.uk",
       btn: "Send Email",
       icon: (
         <svg
