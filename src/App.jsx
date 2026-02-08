@@ -6,6 +6,7 @@ import Footer from "./components/Homecomponents/Footer";
 import About from "./pages/About";
 import ScrollToTop from "./ScrollToTop";
 import Services from "./pages/Services";
+import BookingCalculator from "./pages/BookingCalculator";
 import Contact from "./pages/Contact";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
@@ -29,7 +30,10 @@ const App = () => {
         <Route path="/contact" element={<Contact />} />
         <Route path="/TermsAndConditions" element={<TermsAndConditions />} />
         <Route path="/PrivacyPolicy" element={<PrivacyPolicy />} />
-
+        <Route
+          path="/BookingCalculator"
+          element={<BookingCalculator />}
+        ></Route>
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />}></Route>
         <Route
