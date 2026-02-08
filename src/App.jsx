@@ -13,6 +13,7 @@ import Register from "./pages/Register";
 import CleanerApplication from "./pages/Cleanerapplication";
 import ChatBox from "./components/Homecomponents/ChatBox";
 import JoinTeam from "./pages/JoinTeam";
+import PricingGuide from "./pages/PricingGuide";
 import ClientRegistration from "./pages/Clientregisteration";
 import TermsAndConditions from "./pages/TermsAndConditions";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
@@ -25,6 +26,7 @@ const App = () => {
       <ScrollToTop />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/PricingGuide" element={<PricingGuide />}></Route>
         <Route path="/about" element={<About />} />
         <Route path="/services" element={<Services />} />
         <Route path="/contact" element={<Contact />} />
