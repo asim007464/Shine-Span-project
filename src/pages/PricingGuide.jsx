@@ -228,10 +228,10 @@ const PricingCard = ({ icon, title, price, desc, items, highlight }) => (
 
 const FeatureCard = ({ icon, title, desc, fee, urgent }) => (
   <div
-    className={`bg-white p-10 rounded-2xl border transition-all duration-300 group flex flex-col h-full ${urgent ? "border-red-100 shadow-red-50 hover:shadow-red-100" : "border-gray-100 shadow-sm hover:shadow-xl"}`}
+    className={`bg-white p-10 rounded-2xl border transition-all duration-300 group flex flex-col h-full ${"border-gray-100 shadow-sm hover:shadow-xl"}`}
   >
     <div
-      className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-8 transition-colors duration-300 ${urgent ? "bg-red-50 text-red-500" : "bg-blue-50 text-[#448cff] group-hover:bg-[#448cff] group-hover:text-white"}`}
+      className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-8 transition-colors duration-300 ${"bg-blue-50 text-[#448cff] group-hover:bg-[#448cff] group-hover:text-white"}`}
     >
       {icon}
     </div>
