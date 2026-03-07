@@ -261,19 +261,16 @@ const CleanerApplication = () => {
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                     <Input
                       label="First name *"
-                      placeholder="John"
                       value={formData.firstName}
                       onChange={(v) => updateField("firstName", v)}
                     />
                     <Input
                       label="Middle name"
-                      placeholder="William"
                       value={formData.middleName}
                       onChange={(v) => updateField("middleName", v)}
                     />
                     <Input
                       label="Surname *"
-                      placeholder="Doe"
                       value={formData.surname}
                       onChange={(v) => updateField("surname", v)}
                     />
@@ -306,21 +303,18 @@ const CleanerApplication = () => {
                   <Input
                     label="Mobile number *"
                     icon={<Phone size={18} />}
-                    placeholder="07123456789"
                     value={formData.mobile}
                     onChange={(v) => updateField("mobile", v)}
                   />
                   <Input
                     label="Email address *"
                     icon={<Mail size={18} />}
-                    placeholder="john.doe@example.com"
                     value={formData.email}
                     onChange={(v) => updateField("email", v)}
                   />
                   <Input
                     label="Home postcode *"
                     icon={<MapPin size={18} />}
-                    placeholder="SW1A 1AA"
                     value={formData.postcode}
                     onChange={(v) => updateField("postcode", v)}
                   />
@@ -582,7 +576,7 @@ const FeatureItem = ({ icon, label }) => (
   </li>
 );
 
-const Input = ({ label, icon, placeholder, value, onChange }) => (
+const Input = ({ label, icon, value, onChange }) => (
   <div className="space-y-2 w-full">
     <label className="text-sm font-bold text-slate-700">{label}</label>
     <div className="relative">
@@ -593,7 +587,6 @@ const Input = ({ label, icon, placeholder, value, onChange }) => (
       )}
       <input
         type="text"
-        placeholder={placeholder}
         value={value}
         onChange={(e) => onChange(e.target.value)}
         className={`w-full ${icon ? "pl-12" : "px-4"} pr-4 py-3 border border-slate-300 rounded-xl outline-none focus:border-blue-600 transition-all font-medium text-slate-600`}

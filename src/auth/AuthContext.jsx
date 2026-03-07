@@ -57,10 +57,14 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  const isAdmin =
-    profile?.role === "admin" ||
+  const isSuperAdmin =
+    profile?.role === "super_admin" ||
     user?.email === "mwaseeemsajad@gmail.com" ||
     user?.email?.endsWith("@admin.shinespan.co.uk");
+
+  const isAdmin =
+    isSuperAdmin ||
+    profile?.role === "admin";
 
   const value = {
     user,
@@ -68,6 +72,7 @@ export const AuthProvider = ({ children }) => {
     profile,
     loading,
     isAdmin,
+    isSuperAdmin,
     signOut: () => supabase.auth.signOut(),
   };
 

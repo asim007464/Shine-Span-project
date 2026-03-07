@@ -5,17 +5,17 @@ const Services = () => {
     {
       title: "General House Cleaning",
       desc: "Regular cleaning service for busy homeowners looking for a consistently spotless environment.",
-      image: "general.png",
+      image: "/general.png",
     },
     {
       title: "Deep Cleaning",
       desc: "Intensive cleaning for hard-to-reach areas, perfect for seasonal refreshes or move-in/out.",
-      image: "https://shinespan.co.uk/assets/deep-CAaWYHgI.webp",
+      image: "/Servicesimgs/deepcleaning.webp",
     },
     {
       title: "Carpet Cleaning",
       desc: "Professional steam cleaning for carpets and rugs using eco-friendly, deep-stain removal tech.",
-      image: "https://shinespan.co.uk/assets/carpet-BbBqglox.jpg",
+      image: "/Servicesimgs/Carpetcleaning.jpg",
     },
   ];
 
